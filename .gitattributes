@@ -1,2 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+brew install git-lfs（Homebrewを使用している場合）
+git lfs install
+git lfs track LARGE_FILE
+git add .gitattributes
+Assets/Editor/x64/Bakery/cudnn64_7.dll filter=lfs diff=lfs merge=lfs -text
+
