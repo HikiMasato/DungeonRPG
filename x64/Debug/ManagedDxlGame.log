@@ -1,0 +1,79 @@
+﻿  DungeonScene.cpp
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.h(264,42): warning C4244: '初期化中': 'float' から 'const int' への変換です。データが失われる可能性があります。
+  (ソース ファイル 'program/game/DungeonScene.cpp' をコンパイルしています)
+  
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.h(265,42): warning C4244: '初期化中': 'float' から 'const int' への変換です。データが失われる可能性があります。
+  (ソース ファイル 'program/game/DungeonScene.cpp' をコンパイルしています)
+  
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.h(285,47): warning C4244: '初期化中': 'float' から 'const int' への変換です。データが失われる可能性があります。
+  (ソース ファイル 'program/game/DungeonScene.cpp' をコンパイルしています)
+  
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.h(287,44): warning C4244: '初期化中': 'float' から 'const int' への変換です。データが失われる可能性があります。
+  (ソース ファイル 'program/game/DungeonScene.cpp' をコンパイルしています)
+  
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\GameManager.h(292,22): warning C4244: '初期化中': 'const int' から 'float' への変換です。データが失われる可能性があります。
+  (ソース ファイル 'program/game/DungeonScene.cpp' をコンパイルしています)
+  
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\GameManager.h(259,17): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+  (ソース ファイル 'program/game/DungeonScene.cpp' をコンパイルしています)
+  
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\MapManager.h(79,26): warning C4244: '引数': 'float' から 'const unsigned __int64' への変換です。データが失われる可能性があります。
+  (ソース ファイル 'program/game/DungeonScene.cpp' をコンパイルしています)
+  
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\MapManager.h(79,38): warning C4244: '引数': 'float' から 'unsigned __int64' への変換です。データが失われる可能性があります。
+  (ソース ファイル 'program/game/DungeonScene.cpp' をコンパイルしています)
+  
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\MapManager.h(146,28): warning C4267: 'return': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  (ソース ファイル 'program/game/DungeonScene.cpp' をコンパイルしています)
+  
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\Character.h(209,19): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+  (ソース ファイル 'program/game/DungeonScene.cpp' をコンパイルしています)
+  
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\Enemy.h(83,14): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+  (ソース ファイル 'program/game/DungeonScene.cpp' をコンパイルしています)
+  
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\Inventory.h(22,29): warning C4267: 'return': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  (ソース ファイル 'program/game/DungeonScene.cpp' をコンパイルしています)
+  
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(182,72): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(182,44): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(184,67): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(184,42): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(185,77): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(185,49): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(248,56): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(248,34): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(253,56): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(253,34): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(257,56): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(257,34): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(267,57): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(267,35): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(272,60): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(272,35): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(289,66): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(289,39): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(415,19): warning C4129: '=': エスケープ シーケンスとして正しく認識されませんでした。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(452,53): warning C4838: 'float' から 'int' への変換には縮小変換が必要です
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(452,53): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(452,80): warning C4838: 'float' から 'int' への変換には縮小変換が必要です
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(452,80): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(452,107): warning C4838: 'float' から 'int' への変換には縮小変換が必要です
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(452,107): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(452,134): warning C4838: 'float' から 'int' への変換には縮小変換が必要です
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(452,134): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(452,161): warning C4838: 'float' から 'int' への変換には縮小変換が必要です
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(452,161): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(453,50): warning C4838: 'float' から 'int' への変換には縮小変換が必要です
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(453,50): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(453,75): warning C4838: 'float' から 'int' への変換には縮小変換が必要です
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(453,75): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(453,102): warning C4838: 'float' から 'int' への変換には縮小変換が必要です
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(453,102): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(453,130): warning C4838: 'float' から 'int' への変換には縮小変換が必要です
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(453,130): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(453,158): warning C4838: 'float' から 'int' への変換には縮小変換が必要です
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(453,158): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(557,19): warning C4129: '=': エスケープ シーケンスとして正しく認識されませんでした。
+C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(646,18): warning C4129: '=': エスケープ シーケンスとして正しく認識されませんでした。
+  ManagedDxlGame.vcxproj -> C:\Users\vantan\Desktop\c++ 2月課題 比氣 聖斗\DungeonRPG\x64\Debug\ManagedDxlGame.exe
