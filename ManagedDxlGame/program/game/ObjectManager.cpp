@@ -186,10 +186,12 @@ void ObjectManager::GenerateOrders(Factory::PlayerSpawn now_spawn_, bool is_dung
 		
 		//指定回数実行
 		for (int i = 0; i < GENERATE_ITEM; i++) {
+			//生成するアイテムの名前を取得
 			std::string item_name = GetRandKindItemValue();
 			//アイテムランダム生成受注
 			for (int k = 1; k < item_data.size(); k++) {
-				//ランダムに決定した名前の敵を生成
+
+				//ランダムに決定した名前のアイテム生成
 				if (item_name == item_data[k][1].c_str()) {
 					//Itemの生成受注
 					factory->GenerateItem(
@@ -208,7 +210,7 @@ void ObjectManager::GenerateOrders(Factory::PlayerSpawn now_spawn_, bool is_dung
 
 					break;
 				}
-
+				
 			}
 		}
 
@@ -244,6 +246,10 @@ void ObjectManager::GenerateOrders(Factory::PlayerSpawn now_spawn_, bool is_dung
 				}
 			}
 		}
+
+
+		//クリアアイテムを生成受注を行う関数
+		GenerateClearItem();
 
 		game_manager->CameraReset();
 
@@ -362,6 +368,7 @@ std::string ObjectManager::GenerateShopItem()
 }
 
 //------------------------------------------------------------------------------------------------------------
+//敵を倒したときにドロップするアイテム生成受注関数
 void ObjectManager::GenerateDropItem(tnl::Vector3 pos)
 {
 	std::string item_name = GetRandKindItemValue();
@@ -573,7 +580,7 @@ std::string ObjectManager::GetRandKindItemValue()
 
 	int rand_item = game_manager->GetRandValue((int)ItemManager::ItemName::APPLE, (int)ItemManager::ItemName::ATTACK);
 	//アイテムの名前配列　
-	std::string name[] = { "リンゴ","薬草","防御力","ダイアモンド","Gold","ドロップアイテム","ポーション","攻撃力"};
+	std::string name[] = { "リンゴ","薬草","防御力","Gold","ドロップアイテム","ポーション","攻撃力"};
 
 	return name[rand_item];
 }
@@ -640,6 +647,56 @@ void ObjectManager::SetEnemySkill(std::string name)
 	else if (name == "King") {
 		SetCharaSkill(factory->GetEnemy()->GetSkillList(), SkillManager::UseEffectType::ENEMY, SkillManager::EffectName::BRACKMAGIC);
 		SetCharaSkill(factory->GetEnemy()->GetSkillList(), SkillManager::UseEffectType::BOTHCHARACTOR, SkillManager::EffectName::RECOVERY);
+	}
+
+}
+
+//------------------------------------------------------------------------------------------------------------
+//確率でクリアアイテムの生成を受注する関数
+bool ObjectManager::Probability()
+{
+	// 確率テーブルの例
+	std::map<std::string, double> probabilityTable = {
+		{"生成する", 5},		//5%の確率 true
+		{"生成しない", 95},		//95%の確率 false
+	};
+
+	//アイテム生成時デバッグ
+	tnl::DebugTrace("\n=================確率結果 : %s====================\n", RandomWithProbabilityTable(probabilityTable));
+	// 結果を取得
+	return RandomWithProbabilityTable(probabilityTable);
+
+}
+
+//------------------------------------------------------------------------------------------------------------
+//クリアアイテムの生成を受注する関数
+//Probability関数によって生成するかを決める
+void ObjectManager::GenerateClearItem()
+{
+	//trueが返ってきた場合
+	if (Probability()) {
+
+		//Itemの生成受注
+		factory->GenerateItem(
+			game_manager->SetStartPosition(GameManager::SetStartPositionType::ITEM),
+			std::stoi(item_data[4][0].c_str()),
+			item_data[4][1].c_str(),
+			item_data[4][2].c_str(),
+			item_data[4][3].c_str(),
+			std::stoi(item_data[4][4]),
+			object_list,
+			alive_item
+		);
+
+		//アイテム生成時デバッグ
+		tnl::DebugTrace("\n=================クリアアイテム生成完了====================\n");
+
+	}
+	//それ以外
+	else {
+		//アイテム生成時デバッグ
+		tnl::DebugTrace("\n=================クリアアイテム未生成====================\n");
+		return;
 	}
 
 }

@@ -16,7 +16,6 @@ public:
 		APPLE,
 		HERB,
 		DEFFENCE,
-		DIAMOND,
 		GOLD,
 		DROPITEM,
 		POTION,

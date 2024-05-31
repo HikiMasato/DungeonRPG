@@ -6,6 +6,9 @@
 ///GameManagerクラスにはこのクラスをインスタンス化すればすべてのオブジェクトを描画、などを一括で行える
 ///**************************************************** 
 #pragma once
+#include <map>
+#include <random>
+#include <iterator>
 #include "MyCamera.h"
 #include "Factory.h"
 #include "Skill.h"
@@ -164,6 +167,10 @@ private:
 	//すべてのマップチップが格納されている
 	std::list <std::shared_ptr<MapChip>>all_chip_list;
 
+	//クリアアイテムを生成時の判定に使用する変数
+	std::string rand_item = "";
+	const std::string check_item = "生成する";
+
 	//生成する特定のオブジェクトの数
 	const int GENERATE_ENEMY = 5;
 	const int GENERATE_ITEM = 5;
@@ -211,4 +218,40 @@ private:
 	void SetPlayerSkill();
 	//敵スキルをセットする
 	void SetEnemySkill(std::string name);
+
+
+	//確率で出力結果を変更する
+	template <typename TABLE>
+	bool RandomWithProbabilityTable(const TABLE& probabilityTable) {
+		// 確率の合計を計算
+		double totalProbability = 0;
+		for (const auto& entry : probabilityTable) {
+			totalProbability += entry.second;
+		}
+
+		// 確率分布を作成
+		std::vector<double> probabilities;
+		for (const auto& entry : probabilityTable) {
+			probabilities.push_back(entry.second / totalProbability);
+		}
+
+		// ランダムデバイスとジェネレータを初期化
+		std::random_device rd;
+		std::mt19937 gen(rd());
+
+		// 確率分布に基づいてランダムなインデックスを選択
+		std::discrete_distribution<> dist(probabilities.begin(), probabilities.end());
+		int randomIndex = dist(gen); // 整数型に変更
+
+		// イテレータを使ってランダムなキーを取得
+		auto it = std::next(probabilityTable.begin(), randomIndex);
+		return it->first == check_item; // キーを返す(bool値で出力 => 生成する : true, 生成しない : false)
+	}
+
+
+	//確率でtrue,falseを返す関数
+	bool Probability();
+	//クリアアイテムの生成を受注する関数
+	//Probability関数によって生成するかを決める
+	void GenerateClearItem();
 };
