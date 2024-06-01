@@ -872,9 +872,26 @@ bool DungeonScene::SeqFirstMenu(const float delta_time)
 		return true;
 	}
 
-	//first_menuの1番目を選択した状態でenterを押したとき
+	//first_menuの2番目を選択した状態でenterを押したとき
 	//閉じるでメニューを閉じる
-	if (first_menu->select_value == 2 && tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
+	if (now_draw_uiwin == NowDrawUiWindow::OPTION && first_menu->select_value == 2 && tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
+		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[16]);
+
+		first_menu->menu_alive = false;
+		now_draw_uiwin = NowDrawUiWindow::NONE;
+		tnl::DebugTrace("\n==========================first_menuを閉じた=========================\n");
+
+		//これ以上前のシーケンスがないので自分自身に戻る
+		ChangeMenuSequence(MenuSequence::NONE);
+		return false;
+
+	}
+
+	//今日はここでダンジョンを抜けれるようにする
+	//プレイヤークラスに作ったダイア数チェック関数で判定してtrueが返ってくればダンジョン脱出ができるようになる仕組みにする 
+	//first_menuの3番目を選択した状態でenterを押したとき
+	//閉じるでメニューを閉じる
+	if (now_draw_uiwin == NowDrawUiWindow::OPTION && first_menu->select_value == 2 && tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
 		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[16]);
 
 		first_menu->menu_alive = false;
@@ -888,7 +905,7 @@ bool DungeonScene::SeqFirstMenu(const float delta_time)
 	}
 
 	//Escキーでもfistmenuを閉じれる
-	if (tnl::Input::IsKeyDownTrigger(eKeys::KB_ESCAPE)) {
+	if (now_draw_uiwin == NowDrawUiWindow::OPTION && tnl::Input::IsKeyDownTrigger(eKeys::KB_ESCAPE)) {
 		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[16]);
 
 		first_menu->menu_alive = false;

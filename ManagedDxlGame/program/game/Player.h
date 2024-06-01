@@ -42,6 +42,11 @@ public:
 	//プレイヤーの経験値を加算する関数
 	//経験値が最大になればレベルが上がる
 	bool AddExp(int add_exp);
+
+	//クリアに必要なダイアモンド数を満たしているか判定する
+	//満たしていればtrue : 満たしていなければfalse
+	bool CheckClearItemNum() const;
+
 	//================ゲッター===================
 
 	ObjectType GetObjectType() const override {
@@ -102,6 +107,9 @@ private:
 
 	//プレイヤーの最大HP
 	int  max_hp = 0;
+
+	//ダンジョン脱出に必要なダイアモンド数
+	const int clear_item_num = 3;
 
 	//必要経験値を増加させる関数
 	void NeedUpExp();
