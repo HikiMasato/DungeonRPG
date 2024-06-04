@@ -17,6 +17,7 @@
 #include "SceneBase.h"
 #include "SceneTitle.h"
 #include "ScenePlay.h"
+#include "SceneStartMap.h"
 #include "DungeonScene.h"
 #include "SceneEnd.h"
 //-------------------------------------------------------
@@ -74,6 +75,8 @@ DungeonScene::DungeonScene()
 DungeonScene::~DungeonScene()
 {
 	StopSoundMem(SceneTitle::game_manager->GetSoundManager()->sound_csv[2]);
+
+
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -84,7 +87,7 @@ void DungeonScene::Update(float delta_time)
 
 	if (fade_sequence_type != FadeSequence::FADEDESC) {
 
-		//マウスのカーソルの座標を取得
+		//マウスのカーソルの座標を取得;
 		GetMousePoint(&mouce_x, &mouce_y);
 
 		//プレイヤーのポジションを取得
@@ -124,6 +127,7 @@ void DungeonScene::Update(float delta_time)
 	}
 	
 }
+
 //------------------------------------------------------------------------------------------------------------
 //描画
 void DungeonScene::Draw()
@@ -210,10 +214,11 @@ void DungeonScene::InitDungeonScene()
 	MenuWindow::MenuType_t* first_menu_ = new MenuWindow::MenuType_t[]{
 		{170,280,"持ち物",0},
 		{170,310,"タイトルへ戻る",1},
-		{170,340,"メニューを閉じる",2}
+		{170,340,"メニューを閉じる",2},
+		{170,370,"ダンジョンを脱出する",3}
 	};
 	//tabキーをおしたときの最初のメニュー
-	first_menu = new MenuWindow(160, 260, 220, 220, "using_graphics/window_ui.png", first_menu_, 3, 0.45);
+	first_menu = new MenuWindow(160, 260, 220, 220, "using_graphics/window_ui.png", first_menu_, 4, 0.45);
 	
 	//ショップ用インベントリ
 	if (shop_pages.empty()) {
@@ -402,7 +407,6 @@ void DungeonScene::UIDraw()
 		DrawStringEx(dungeon_level_ui->menu_x + 50, dungeon_level_ui->menu_y + 140, -1, "Enterで買い物へ");
 	
 	}
-	
 	
 }
 
@@ -865,7 +869,7 @@ bool DungeonScene::SeqFirstMenu(const float delta_time)
 		//選択時のSE
 		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[10]);
 		first_menu->manage_select_flag = false;
-		tnl::DebugTrace("\n=========================INVENTORY=======================\n");
+		tnl::DebugTrace("\n=========================INVENTORYを開いた=======================\n");
 		//MenuSequenceをSeqInventoryOpenに移動する
 		ChangeMenuSequence(MenuSequence::INVENTORY_OPEN);
 
@@ -875,6 +879,7 @@ bool DungeonScene::SeqFirstMenu(const float delta_time)
 	//first_menuの2番目を選択した状態でenterを押したとき
 	//閉じるでメニューを閉じる
 	if (now_draw_uiwin == NowDrawUiWindow::OPTION && first_menu->select_value == 2 && tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
+		//選択時のSE
 		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[16]);
 
 		first_menu->menu_alive = false;
@@ -887,16 +892,22 @@ bool DungeonScene::SeqFirstMenu(const float delta_time)
 
 	}
 
-	//今日はここでダンジョンを抜けれるようにする
 	//プレイヤークラスに作ったダイア数チェック関数で判定してtrueが返ってくればダンジョン脱出ができるようになる仕組みにする 
 	//first_menuの3番目を選択した状態でenterを押したとき
-	//閉じるでメニューを閉じる
-	if (now_draw_uiwin == NowDrawUiWindow::OPTION && first_menu->select_value == 2 && tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
+	//ダンジョンを脱出する
+	if (now_draw_uiwin == NowDrawUiWindow::OPTION && first_menu->select_value == 3 && tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
+		//選択時のSE
 		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[16]);
 
 		first_menu->menu_alive = false;
 		now_draw_uiwin = NowDrawUiWindow::NONE;
-		tnl::DebugTrace("\n==========================first_menuを閉じた=========================\n");
+		
+
+		auto mgr = SceneManager::GetInstance();
+		mgr->ChangeScene(new SceneStartMap());
+		
+
+		tnl::DebugTrace("\n==========================Dungeon Out=========================\n");
 
 		//これ以上前のシーケンスがないので自分自身に戻る
 		ChangeMenuSequence(MenuSequence::NONE);
@@ -917,6 +928,7 @@ bool DungeonScene::SeqFirstMenu(const float delta_time)
 		return false;
 	}
 	return false;
+
 }
 
 //------------------------------------------------------------------------------------------------------------
