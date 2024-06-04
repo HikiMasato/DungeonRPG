@@ -7,16 +7,32 @@
       "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\SceneStartMap.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\SceneStartMap.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\SceneStartMap.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\MapManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\MapManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapChip.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\MapChip.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapChip.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\MapChip.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\DungeonScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\DungeonScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\DungeonScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\DungeonScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\SceneStartMap.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\SceneStartMap.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ScenePlay.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -103,10 +119,6 @@
       "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\Skill.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\MapManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -153,20 +165,12 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector||{3B902123-F8A7-4915-9F01-361F908088D0}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\MapManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\EnemyManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\EnemyManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapChip.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\MapChip.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ItemManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -230,10 +234,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xhash||{3B902123-F8A7-4915-9F01-361F908088D0}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapChip.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FC2585E0-9D12-4711-BF6C-C7C35C40FCB1}|ManagedDxlGame\\ManagedDxlGame.vcxproj|solutionrelative:ManagedDxlGame\\program\\game\\MapChip.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xstring||{3B902123-F8A7-4915-9F01-361F908088D0}|"
@@ -354,7 +354,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -362,70 +362,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "DungeonScene.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\DungeonScene.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\DungeonScene.cpp",
               "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\DungeonScene.cpp",
               "RelativeToolTip": "ManagedDxlGame\\program\\game\\DungeonScene.cpp",
-              "ViewState": "AQIAAH4DAAAAAAAAAAAAAIoDAAAkAAAA",
+              "ViewState": "AQIAAIEDAAAAAAAAAAAAAIoDAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-02-09T04:25:06.886Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ObjectManager.h",
-              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ObjectManager.h",
-              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\ObjectManager.h",
-              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ObjectManager.h",
-              "RelativeToolTip": "ManagedDxlGame\\program\\game\\ObjectManager.h",
-              "ViewState": "AQIAAPAAAAAAAAAAAAAYwPcAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-02-22T06:55:53.237Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Player.cpp",
-              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Player.cpp",
-              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Player.cpp",
-              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Player.cpp",
-              "RelativeToolTip": "ManagedDxlGame\\program\\game\\Player.cpp",
-              "ViewState": "AQIAAOgAAAAAAAAAAAAYwPoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-01-29T08:37:33.47Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DungeonScene.h",
-              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\DungeonScene.h",
-              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\DungeonScene.h",
-              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\DungeonScene.h",
-              "RelativeToolTip": "ManagedDxlGame\\program\\game\\DungeonScene.h",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAAB0AAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-02-09T04:24:48.463Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ScenePlay.cpp",
-              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ScenePlay.cpp",
-              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\ScenePlay.cpp",
-              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ScenePlay.cpp",
-              "RelativeToolTip": "ManagedDxlGame\\program\\game\\ScenePlay.cpp",
-              "ViewState": "AQIAADEAAAAAAAAAAADwvyIAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-01-29T08:37:33.486Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "ScenePlay.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ScenePlay.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\ScenePlay.h",
@@ -433,12 +383,11 @@
               "RelativeToolTip": "ManagedDxlGame\\program\\game\\ScenePlay.h",
               "ViewState": "AQIAAAIAAAAAAAAAAAAgwA4AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-01-29T08:37:33.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-01-29T08:37:33.361Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "SceneStartMap.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\SceneStartMap.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\SceneStartMap.h",
@@ -457,14 +406,115 @@
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\SceneStartMap.cpp",
               "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\SceneStartMap.cpp",
               "RelativeToolTip": "ManagedDxlGame\\program\\game\\SceneStartMap.cpp",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAYwF0AAAAoAAAA",
+              "ViewState": "AQIAAGIAAAAAAAAAAAAqwGoAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-02-17T18:32:37.977Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MapChip.cpp",
+              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapChip.cpp",
+              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\MapChip.cpp",
+              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapChip.cpp",
+              "RelativeToolTip": "ManagedDxlGame\\program\\game\\MapChip.cpp",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAYwFcAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-06T00:41:07.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MapChip.h",
+              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapChip.h",
+              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\MapChip.h",
+              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapChip.h",
+              "RelativeToolTip": "ManagedDxlGame\\program\\game\\MapChip.h",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAAAF0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-06T00:41:17.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MapManager.h",
+              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapManager.h",
+              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\MapManager.h",
+              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapManager.h",
+              "RelativeToolTip": "ManagedDxlGame\\program\\game\\MapManager.h",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAAAEYAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-29T08:37:33.392Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MapManager.cpp",
+              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapManager.cpp",
+              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\MapManager.cpp",
+              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapManager.cpp",
+              "RelativeToolTip": "ManagedDxlGame\\program\\game\\MapManager.cpp",
+              "ViewState": "AQIAAJ4AAAAAAAAAAAAowHgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-29T08:37:33.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ScenePlay.cpp",
+              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ScenePlay.cpp",
+              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\ScenePlay.cpp",
+              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ScenePlay.cpp",
+              "RelativeToolTip": "ManagedDxlGame\\program\\game\\ScenePlay.cpp",
+              "ViewState": "AQIAADEAAAAAAAAAAADwvyIAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-29T08:37:33.486Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "DungeonScene.h",
+              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\DungeonScene.h",
+              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\DungeonScene.h",
+              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\DungeonScene.h",
+              "RelativeToolTip": "ManagedDxlGame\\program\\game\\DungeonScene.h",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAB0AAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-09T04:24:48.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Player.cpp",
+              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Player.cpp",
+              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Player.cpp",
+              "RelativeToolTip": "ManagedDxlGame\\program\\game\\Player.cpp",
+              "ViewState": "AQIAAOgAAAAAAAAAAAAYwPoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-29T08:37:33.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ObjectManager.h",
+              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ObjectManager.h",
+              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\ObjectManager.h",
+              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ObjectManager.h",
+              "RelativeToolTip": "ManagedDxlGame\\program\\game\\ObjectManager.h",
+              "ViewState": "AQIAAPAAAAAAAAAAAAAYwPcAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-22T06:55:53.237Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Character.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Character.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Character.cpp",
@@ -476,7 +526,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "Player.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Player.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Player.h",
@@ -488,7 +538,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "ObjectManager.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ObjectManager.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\ObjectManager.cpp",
@@ -500,7 +550,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "GameManager.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\GameManager.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\GameManager.cpp",
@@ -512,7 +562,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "GameManager.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\GameManager.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\GameManager.h",
@@ -524,7 +574,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "Collision.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Collision.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Collision.h",
@@ -536,7 +586,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "Collision.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Collision.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Collision.cpp",
@@ -548,7 +598,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "ItemManager.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ItemManager.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\ItemManager.h",
@@ -560,7 +610,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "Factory.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Factory.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Factory.cpp",
@@ -572,7 +622,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "Object.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Object.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Object.cpp",
@@ -584,7 +634,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "gm_main.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\gm_main.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\gm_main.cpp",
@@ -596,7 +646,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 23,
               "Title": "Object.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Object.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Object.h",
@@ -608,7 +658,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "SceneTitle.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\SceneTitle.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\SceneTitle.cpp",
@@ -620,7 +670,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "MenuWindow.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MenuWindow.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\MenuWindow.cpp",
@@ -632,7 +682,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 27,
               "Title": "Skill.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Skill.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Skill.cpp",
@@ -644,7 +694,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 28,
               "Title": "Skill.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Skill.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Skill.h",
@@ -656,7 +706,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "Inventory.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Inventory.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Inventory.cpp",
@@ -668,19 +718,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "MapManager.cpp",
-              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapManager.cpp",
-              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\MapManager.cpp",
-              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapManager.cpp",
-              "RelativeToolTip": "ManagedDxlGame\\program\\game\\MapManager.cpp",
-              "ViewState": "AQIAAGcBAAAAAAAAAAAowHMBAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-01-29T08:37:33.47Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "Enemy.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Enemy.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Enemy.cpp",
@@ -692,7 +730,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "Item.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Item.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Item.cpp",
@@ -704,7 +742,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "Factory.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Factory.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Factory.h",
@@ -716,7 +754,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "MenuWindow.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MenuWindow.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\MenuWindow.h",
@@ -728,7 +766,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 36,
               "Title": "SkillManager.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\SkillManager.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\SkillManager.cpp",
@@ -740,7 +778,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "FadeControl.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\FadeControl.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\FadeControl.h",
@@ -752,7 +790,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 37,
               "Title": "SkillManager.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\SkillManager.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\SkillManager.h",
@@ -764,7 +802,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "list",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\list",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\list",
@@ -776,7 +814,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "EffectManager.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\EffectManager.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\EffectManager.cpp",
@@ -788,7 +826,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 38,
               "Title": "EffectManager.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\EffectManager.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\EffectManager.h",
@@ -800,7 +838,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 39,
               "Title": "ResourceManager.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ResourceManager.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\ResourceManager.cpp",
@@ -812,7 +850,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 40,
               "Title": "vector",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
@@ -824,7 +862,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "EnemyManager.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\EnemyManager.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\EnemyManager.cpp",
@@ -836,19 +874,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "MapManager.h",
-              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapManager.h",
-              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\MapManager.h",
-              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapManager.h",
-              "RelativeToolTip": "ManagedDxlGame\\program\\game\\MapManager.h",
-              "ViewState": "AQIAAD0AAAAAAAAAAAAAAEYAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-01-29T08:37:33.392Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 42,
               "Title": "Enemy.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Enemy.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Enemy.h",
@@ -860,19 +886,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "MapChip.cpp",
-              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapChip.cpp",
-              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\MapChip.cpp",
-              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapChip.cpp",
-              "RelativeToolTip": "ManagedDxlGame\\program\\game\\MapChip.cpp",
-              "ViewState": "AQIAABcAAAAAAAAAAADwvyMAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-02-06T00:41:07.081Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "ItemManager.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\ItemManager.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\ItemManager.cpp",
@@ -884,7 +898,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "Stetus.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Stetus.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Stetus.cpp",
@@ -896,7 +910,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "SceneBase.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\SceneBase.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\SceneBase.cpp",
@@ -920,7 +934,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "SceneManager.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\SceneManager.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\SceneManager.cpp",
@@ -932,7 +946,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "SceneManager.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\SceneManager.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\SceneManager.h",
@@ -944,7 +958,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "FadeControl.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\FadeControl.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\FadeControl.cpp",
@@ -956,7 +970,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "SoundManager.cpp",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\SoundManager.cpp",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\SoundManager.cpp",
@@ -968,7 +982,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "SoundManager.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\SoundManager.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\SoundManager.h",
@@ -980,7 +994,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "xutility",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xutility",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xutility",
@@ -992,7 +1006,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "Stetus.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Stetus.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Stetus.h",
@@ -1004,7 +1018,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "string",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\string",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\string",
@@ -1016,7 +1030,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "Item.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Item.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Item.h",
@@ -1028,7 +1042,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": "memory",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\memory",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\memory",
@@ -1040,7 +1054,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "xmemory",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xmemory",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xmemory",
@@ -1052,7 +1066,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "EnemyManager.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\EnemyManager.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\EnemyManager.h",
@@ -1064,7 +1078,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 59,
               "Title": "xhash",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xhash",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xhash",
@@ -1076,7 +1090,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 58,
               "Title": "Inventory.h",
               "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\Inventory.h",
               "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\Inventory.h",
@@ -1085,18 +1099,6 @@
               "ViewState": "AQIAAAQAAAAAAAAAAAAewAwAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-02-16T07:16:24.141Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 59,
-              "Title": "MapChip.h",
-              "DocumentMoniker": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapChip.h",
-              "RelativeDocumentMoniker": "ManagedDxlGame\\program\\game\\MapChip.h",
-              "ToolTip": "C:\\Users\\vantan\\Desktop\\DungeonRPG\\ManagedDxlGame\\program\\game\\MapChip.h",
-              "RelativeToolTip": "ManagedDxlGame\\program\\game\\MapChip.h",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAAEsAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-02-06T00:41:17.626Z"
             },
             {
               "$type": "Document",

@@ -904,7 +904,7 @@ bool DungeonScene::SeqFirstMenu(const float delta_time)
 		
 
 		auto mgr = SceneManager::GetInstance();
-		mgr->ChangeScene(new SceneStartMap());
+		mgr->ChangeScene(new SceneStartMap);
 		
 
 		tnl::DebugTrace("\n==========================Dungeon Out=========================\n");

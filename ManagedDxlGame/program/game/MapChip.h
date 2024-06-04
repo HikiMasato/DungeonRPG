@@ -18,7 +18,8 @@ public:
 
 	//スタートマップのデータを受け取りインスタンス化をする(初期化リスト)
 	MapChip(tnl::Vector3& pos, int chip_handle) : start_map_pos(pos), start_map_handle(chip_handle) { SetMapChipPos(pos); };
-
+	
+	~MapChip();
 	
 	//***********************enum********************
 	//マップのタイプ
@@ -90,5 +91,4 @@ public:
 
 private:
 	GameManager* game_manager;
-	hm::Camera camera ;
 };

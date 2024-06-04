@@ -77,8 +77,8 @@ C:\Users\vantan\Desktop\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(
 C:\Users\vantan\Desktop\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(561,19): warning C4129: '=': エスケープ シーケンスとして正しく認識されませんでした。
 C:\Users\vantan\Desktop\DungeonRPG\ManagedDxlGame\program\game\DungeonScene.cpp(650,18): warning C4129: '=': エスケープ シーケンスとして正しく認識されませんでした。
   コード生成しています。
-  3 of 4702 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  0 of 4702 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    9 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   コード生成が終了しました。
   ManagedDxlGame.vcxproj -> C:\Users\vantan\Desktop\DungeonRPG\x64\Release\ManagedDxlGame.exe

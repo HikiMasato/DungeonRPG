@@ -80,6 +80,15 @@ MapChip::MapChip(std::vector<int> re_chip,GameManager* game_manager_)
 }
 
 //------------------------------------------------------------------------------------------------------------
+MapChip::~MapChip()
+{
+	delete game_manager;
+	game_manager = nullptr;
+
+	allchip.clear();
+}
+
+//------------------------------------------------------------------------------------------------------------
 //マップチップ描画
 void MapChip::MapChipDraw(const hm::Camera& camera, float graphicssize, double ratio, int chip_handle)
 {
