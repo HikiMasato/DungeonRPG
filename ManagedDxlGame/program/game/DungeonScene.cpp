@@ -239,7 +239,9 @@ void DungeonScene::InitDungeonScene()
 void DungeonScene::UIDraw()
 {
 
+	
 	// ドラッグアンドドロップを有効にする
+	//これはコンストラクタに置くべき？
 	SetDragFileValidFlag(TRUE);
 
 	{//プレイヤーステータス
