@@ -152,31 +152,32 @@ private:
 	};
 
 	//Ui宣言*******************************************
-	MenuWindow* use_usable = nullptr;
-	MenuWindow* first_menu = nullptr;
-	Menu* alway_menu = nullptr;
-	
+	std::shared_ptr<MenuWindow> use_usable = nullptr;
+	std::shared_ptr<MenuWindow> first_menu = nullptr;
+	std::shared_ptr<Menu> alway_menu = nullptr;
+	std::shared_ptr<Menu> keyboard_ui = nullptr;
+
 	//画面下のUI
-	Menu* stetus_ui = nullptr;
+	std::shared_ptr<Menu> stetus_ui = nullptr;
 	//所持金などが書かれているUI
-	Menu* gold_ui = nullptr;
+	std::shared_ptr<Menu> gold_ui = nullptr;
 	//スキルセットUI
-	Menu* skill_ui = nullptr;
-	Menu* have_skill_ui = nullptr;
-	Menu* option = nullptr;
-	Menu* inventory = nullptr;
-	Menu* desc = nullptr;
+	std::shared_ptr<Menu> skill_ui = nullptr;
+	std::shared_ptr<Menu> have_skill_ui = nullptr;
+	std::shared_ptr<Menu> option = nullptr;
+	std::shared_ptr<Menu> inventory = nullptr;
+	std::shared_ptr<Menu> desc = nullptr;
 
 	//ダンジョン階段に乗ったら表示
-	Menu* dungeon_level_ui = nullptr;
+	std::shared_ptr<Menu> dungeon_level_ui = nullptr;
 	//ショップに入るUI
-	Menu* shop_ui = nullptr;
+	std::shared_ptr<Menu> shop_ui = nullptr;
 	//ショップインベントリUI
-	Menu* shop_inve_ui = nullptr;
+	std::shared_ptr<Menu> shop_inve_ui = nullptr;
 	//ショップ時コインUI
-	Menu* shop_coin_ui = nullptr;
+	std::shared_ptr<Menu> shop_coin_ui = nullptr;
 	//ショップ時自身のアイテムUI
-	Menu* shop_my_inve_ui = nullptr;
+	std::shared_ptr<Menu> shop_my_inve_ui = nullptr;
 
 	std::list<Menu*>alway_is_ui;
 	
@@ -240,6 +241,9 @@ private:
 	tnl::Vector3 hpbar_postion = { 720,600,0 };
 
 	tnl::Vector3 player_pos = { 0, 0, 0 };
+
+	//マウスのホイールのy座標
+	int wheely = 340;
 
 	//********drag&drop処理変数***************
 	

@@ -44,7 +44,8 @@ ResourceManager::ResourceManager(GameManager* game_manager_) {
 	icon_handles.resize(13);
 	sound_handle.resize(16);
 	item_handle.resize(11);
-	
+	keyboard_handle.resize(12);
+
 	//csvの読み込み
 	LoadCharaCsv();
 	LoadAttackeffectCsv();
@@ -52,11 +53,15 @@ ResourceManager::ResourceManager(GameManager* game_manager_) {
 	LoadMapChipCsv();
 	LoadSoundHnadleCsv();
 	LoadItemHandleCsv();
+	LoadKeyHandleCsv();
+
 }
 
 //------------------------------------------------------------------------------------------------------------
 //デストラクタ
-ResourceManager::~ResourceManager() {
+ResourceManager::~ResourceManager() 
+{
+	VectorClear();
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -148,4 +153,23 @@ void ResourceManager::LoadSoundHnadleCsv()
 void ResourceManager::LoadItemHandleCsv()
 {
 	item_handle = tnl::LoadCsv<std::string>("csv/item.csv");
+}
+
+//------------------------------------------------------------------------------------------------------------
+//keyboardハンドルをvector配列に格納する
+void ResourceManager::LoadKeyHandleCsv()
+{
+	keyboard_handle = tnl::LoadCsv<std::string>("csv/keyboard.csv");
+}
+
+//------------------------------------------------------------------------------------------------------------
+//このクラスが持つ配列などをclearする関数
+void ResourceManager::VectorClear()
+{
+	dungeon_handls.clear();
+	effect_graphics.clear();
+	icon_handles.clear();
+	sound_handle.clear();
+	item_handle.clear();
+	keyboard_handle.clear();
 }

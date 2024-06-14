@@ -124,6 +124,20 @@ void DungeonScene::Update(float delta_time)
 		//階段に乗った時にenterキーが押されれば階層が一つ下がる
 		CheckExtraOnTile();
 
+
+		{//マウスホイール座標計算
+
+			//マウスホイールの座標を受け取る
+			wheely += GetMouseWheelRotVol() * 100;
+
+			//マウスホイールの上限下限
+			if (wheely >= 340) {
+				wheely = 340;
+			}
+			else if (wheely <= 140) {
+				wheely = 140;
+			}
+		}
 	}
 	
 }
@@ -183,22 +197,24 @@ void DungeonScene::InitDungeonScene()
 	//
 	//**********************Menu***********************
 
-	stetus_ui		 = new Menu(base_skill_set_pos.x - 500, base_skill_set_pos.y + 150, 500, 170, "using_graphics/window_ui.png");
-	gold_ui			 = new Menu(1060, 10, 220, 100, "using_graphics/window_ui.png");
-	skill_ui		 = new Menu(base_skill_set_pos.x, base_skill_set_pos.y - 40, 90, 360, "using_graphics/window_ui.png");
-	have_skill_ui	 = new Menu(base_skill_set_pos.x - 500, base_skill_set_pos.y - 150, 500, 300, "using_graphics/window_ui.png");
-	alway_menu		 = new Menu(10, 260, 150, 150, "using_graphics/window_ui.png");
-	option			 = new Menu(100, 300, 220, 220, "using_graphicse/window_ui.png");//(WIP)
+	stetus_ui		 = std::make_shared<Menu>(base_skill_set_pos.x - 500, base_skill_set_pos.y + 150, 500, 170, "using_graphics/window_ui.png");
+	gold_ui			 = std::make_shared<Menu>(1060, 10, 220, 100, "using_graphics/window_ui.png");
+	skill_ui		 = std::make_shared<Menu>(base_skill_set_pos.x, base_skill_set_pos.y - 40, 90, 360, "using_graphics/window_ui.png");
+	have_skill_ui	 = std::make_shared<Menu>(base_skill_set_pos.x - 500, base_skill_set_pos.y - 150, 500, 300, "using_graphics/window_ui.png");
+	alway_menu		 = std::make_shared<Menu>(10, 200, 150, 150, "using_graphics/window_ui.png");
+	option			 = std::make_shared<Menu>(100, 300, 220, 220, "using_graphicse/window_ui.png");//(WIP)
+	//keyboardのui
+	keyboard_ui		 = std::make_shared<Menu>(10, 350, 360, 370, "using_graphics/window_ui.png");
 
-	inventory		 = new Menu(380, 220, 440, 330, "using_graphics/window_ui.png");
-	desc			 = new Menu(820, 400, 300, 150, "using_graphics/window_ui.png");
+	inventory		 = std::make_shared<Menu>(380, 220, 440, 330, "using_graphics/window_ui.png");
+	desc			 = std::make_shared<Menu>(820, 400, 300, 150, "using_graphics/window_ui.png");
 
-	dungeon_level_ui = new Menu(400, 400, 200, 200, "using_graphics/window_ui.png");
+	dungeon_level_ui = std::make_shared<Menu>(400, 400, 200, 200, "using_graphics/window_ui.png");
 
-	shop_ui			 = new Menu(400, 400, 200, 200, "using_graphics/window_ui.png");
-	shop_inve_ui	 = new Menu(410,120,320,340, "using_graphics/window_ui.png");
-	shop_coin_ui	 = new Menu(720,280,300,200, "using_graphics/window_ui.png");
-	shop_my_inve_ui	 = new Menu(90,120,320,340, "using_graphics/window_ui.png");
+	shop_ui			 = std::make_shared<Menu>(400, 400, 200, 200, "using_graphics/window_ui.png");
+	shop_inve_ui	 = std::make_shared<Menu>(410,120,320,340, "using_graphics/window_ui.png");
+	shop_coin_ui	 = std::make_shared<Menu>(720,280,300,200, "using_graphics/window_ui.png");
+	shop_my_inve_ui	 = std::make_shared<Menu>(90,120,320,340, "using_graphics/window_ui.png");
 
 
 	//**********************MenuWindow**********************************
@@ -209,16 +225,16 @@ void DungeonScene::InitDungeonScene()
 		{460,450,"使う",0},
 		{460,480,"やめる",2}
 	};
-	use_usable = new MenuWindow(440, 440, 200, 200, "using_graphics/window_ui.png", menu_usable, 2, 0.15);
+	use_usable = std::make_shared<MenuWindow>(440, 440, 200, 200, "using_graphics/window_ui.png", menu_usable, 2, 0.15);
 
 	MenuWindow::MenuType_t* first_menu_ = new MenuWindow::MenuType_t[]{
-		{170,280,"持ち物",0},
-		{170,310,"タイトルへ戻る",1},
-		{170,340,"メニューを閉じる",2},
-		{170,370,"ダンジョンを脱出する",3}
+		{170,150,"持ち物",0},
+		{170,180,"タイトルへ戻る",1},
+		{170,210,"メニューを閉じる",2},
+		{170,240,"ダンジョンを脱出する",3}
 	};
 	//tabキーをおしたときの最初のメニュー
-	first_menu = new MenuWindow(160, 260, 220, 220, "using_graphics/window_ui.png", first_menu_, 4, 0.45);
+	first_menu = std::make_shared<MenuWindow>(160, 130, 220, 220, "using_graphics/window_ui.png", first_menu_, 4, 0.45);
 	
 	//ショップ用インベントリ
 	if (shop_pages.empty()) {
@@ -410,6 +426,28 @@ void DungeonScene::UIDraw()
 	
 	}
 	
+	{//keyboard_uiの描画
+	 //説明描画
+
+		//uiの描画
+		keyboard_ui->MenuDraw();
+
+		for (int i = 1; i < SceneTitle::game_manager->GetResourceManager()->keyboard_handle.size(); i++) {
+
+			//描画するkeyiconの座標
+			int dis_y = wheely + i * 50;
+
+			//wheelyがuiのy座標以内なら描画
+			if (dis_y >= keyboard_ui->menu_y && dis_y <= keyboard_ui->menu_y + 370) {
+				//描画(keyicon)
+				DrawRotaGraph(keyboard_ui->menu_x + 30, dis_y, 0.5f, 0, SceneTitle::game_manager->LoadGraphEx(SceneTitle::game_manager->GetResourceManager()->keyboard_handle[i][0].c_str()), true);
+				//説明(discription)
+				DrawStringEx(keyboard_ui->menu_x + 65, dis_y, -1, SceneTitle::game_manager->GetResourceManager()->keyboard_handle[i][1].c_str());
+			}
+
+		}
+	}
+
 }
 
 //------------------------------------------------------------------------------------------------------------

@@ -28,6 +28,9 @@ public:
 	std::vector<std::vector<std::string>> sound_handle;
 	//item_handleが格納されている
 	std::vector<std::vector<std::string>> item_handle;
+	//keyboard_handleが格納されている
+	std::vector<std::vector<std::string>> keyboard_handle;
+	
 	//キャラ情報が書き込んであるcsvを読み込む関数
 	void LoadCharaCsv();
 	//csvから読み込んだステータスの中の画像パスを返すゲッター
@@ -55,9 +58,14 @@ public:
 	void LoadSoundHnadleCsv();
 	//itemハンドルをvector配列に格納する
 	void LoadItemHandleCsv();
-	
+	//keyboardハンドルをvector配列に格納する
+	void LoadKeyHandleCsv();
+
 private:
 
 	GameManager* game_manager;
+
+	//このクラスが持つ配列などをclearする関数
+	void VectorClear();
 };
 
