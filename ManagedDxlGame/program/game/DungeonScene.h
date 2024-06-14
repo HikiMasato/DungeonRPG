@@ -30,21 +30,6 @@ public:
 	~DungeonScene();
 	
 
-	
-
-	//********************変数************************
-	
-	
-
-	//プレイヤーシーケンス変数
-	tnl::Sequence<DungeonScene> sequence_ = tnl::Sequence<DungeonScene>(this, &DungeonScene::ActiveSkillCheck);
-	//敵シーケンス変数
-	tnl::Sequence<DungeonScene> enemy_sequence_ = tnl::Sequence<DungeonScene>(this, &DungeonScene::SeqActiveEnemyAttack);
-	//メニューシーケンス変数
-	tnl::Sequence<DungeonScene> menu_seq_ = tnl::Sequence<DungeonScene>(this, &DungeonScene::SeqFirstMenu);
-	//フェードシーケンス変数
-	tnl::Sequence<DungeonScene> fade_seq_ = tnl::Sequence<DungeonScene>(this, &DungeonScene::SeqFadeIn);
-	
 	//********************関数************************
 
 	void Update(float delta_time);
@@ -151,6 +136,20 @@ private:
 		FADEDESC
 	};
 
+	//********************変数************************
+
+
+
+	//プレイヤーシーケンス変数
+	tnl::Sequence<DungeonScene> sequence_ = tnl::Sequence<DungeonScene>(this, &DungeonScene::ActiveSkillCheck);
+	//敵シーケンス変数
+	tnl::Sequence<DungeonScene> enemy_sequence_ = tnl::Sequence<DungeonScene>(this, &DungeonScene::SeqActiveEnemyAttack);
+	//メニューシーケンス変数
+	tnl::Sequence<DungeonScene> menu_seq_ = tnl::Sequence<DungeonScene>(this, &DungeonScene::SeqFirstMenu);
+	//フェードシーケンス変数
+	tnl::Sequence<DungeonScene> fade_seq_ = tnl::Sequence<DungeonScene>(this, &DungeonScene::SeqFadeIn);
+
+
 	//Ui宣言*******************************************
 	std::shared_ptr<MenuWindow> use_usable = nullptr;
 	std::shared_ptr<MenuWindow> first_menu = nullptr;
@@ -167,6 +166,8 @@ private:
 	std::shared_ptr<Menu> option = nullptr;
 	std::shared_ptr<Menu> inventory = nullptr;
 	std::shared_ptr<Menu> desc = nullptr;
+	//クリア目標を表示するUI
+	std::shared_ptr<Menu> goal_ui = nullptr;
 
 	//ダンジョン階段に乗ったら表示
 	std::shared_ptr<Menu> dungeon_level_ui = nullptr;
@@ -185,12 +186,13 @@ private:
 
 	//*************************変数**************************************
 	 
-	NowDrawSecondWindow now_draw_sec_uiwin = NowDrawSecondWindow::NONE;
-	NowDrawUiWindow now_draw_uiwin = NowDrawUiWindow::NONE;
-	MenuSequence now_menu_type = MenuSequence::NONE;
-	FadeSequence fade_sequence_type = FadeSequence::FADEOUT;
+	NowDrawSecondWindow now_draw_sec_uiwin	= NowDrawSecondWindow::NONE;
+	NowDrawUiWindow now_draw_uiwin			= NowDrawUiWindow::NONE;
+	MenuSequence now_menu_type				= MenuSequence::NONE;
+	FadeSequence fade_sequence_type			= FadeSequence::FADEOUT;
 
 	std::shared_ptr<FadeControl> fade_control = nullptr;
+
 	//デルタタイムを加算する
 	float desc_fade_count = 0;
 	//フェード中の文字を描画する時間

@@ -206,6 +206,8 @@ void DungeonScene::InitDungeonScene()
 	//keyboardのui
 	keyboard_ui		 = std::make_shared<Menu>(10, 350, 360, 370, "using_graphics/window_ui.png");
 
+	goal_ui			 = std::make_shared<Menu>(660, 10, 400, 40, "using_graphics/window_ui.png");
+
 	inventory		 = std::make_shared<Menu>(380, 220, 440, 330, "using_graphics/window_ui.png");
 	desc			 = std::make_shared<Menu>(820, 400, 300, 150, "using_graphics/window_ui.png");
 
@@ -448,6 +450,13 @@ void DungeonScene::UIDraw()
 		}
 	}
 
+	{//目標を表示させるUI
+
+		goal_ui->MenuDraw();
+		//目的
+		DrawStringEx(goal_ui->menu_x + 10, goal_ui->menu_y + 10, -1, "ダイアモンドを3つ集めろ");
+	
+	}
 }
 
 //------------------------------------------------------------------------------------------------------------
