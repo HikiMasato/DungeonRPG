@@ -1,0 +1,12 @@
+keyboard,description
+using_graphics/keyboard/keyboard_w_outline.png,前進
+using_graphics/keyboard/keyboard_d_outline.png,後退
+using_graphics/keyboard/keyboard_a_outline.png,左移動
+using_graphics/keyboard/keyboard_s_outline.png,右移動
+using_graphics/keyboard/keyboard_tab_outline.png,メニューを開く
+using_graphics/keyboard/Keyboard_1_outline.png,通常攻撃
+using_graphics/keyboard/Keyboard_2_outline.png,水攻撃(スキルセット時のみ発動可能)
+using_graphics/keyboard/Keyboard_3_outline.png,風攻撃(スキルセット時のみ発動可能)
+using_graphics/keyboard/Keyboard_4_outline.png,岩攻撃(スキルセット時のみ発動可能)
+using_graphics/keyboard/Keyboard_5_outline.png,炎攻撃(スキルセット時のみ発動可能)
+using_graphics/keyboard/Keyboard_6_outline.png,雷攻撃(スキルセット時のみ発動可能)
