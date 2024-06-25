@@ -61,6 +61,7 @@ SceneStartMap::SceneStartMap()
 	
 	//スターとシーン初期化
 	InitSceneStartMap();
+
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -87,6 +88,8 @@ void SceneStartMap::InitSceneStartMap()
 		SceneTitle::game_manager->ScaleChange();
 	}
 
+	//プレイヤーのスポーンタイプを変更する
+	SceneTitle::game_manager->GetObjectManager()->SetPlayerSpawnType(Factory::PlayerSpawn::STARTMAP);
 	//スタートマップにプレイヤーを生成
 	SceneTitle::game_manager->GetObjectManager()->GenerateOrders(SceneTitle::game_manager->GetObjectManager()->factory->GetPlayerSpawn());
 
@@ -105,11 +108,30 @@ void SceneStartMap::InitSceneStartMap()
 //ダンジョンに入るかどうかのUiを出す判定をチェックする関数
 bool SceneStartMap::CheckDungeonInUi(tnl::Vector3 pos)
 {	
-	//一番右の山
-	tnl::Vector3 open_ui_pos = { 260,600,0 };
+	//一番右の山	
+	tnl::Vector3 open_ui_pos_01 = { 240,550,0 };
+	tnl::Vector3 open_ui_pos_02 = { 280,600,0 };
 		
 
-	if (open_ui_pos.x == pos.x && open_ui_pos.y == pos.y) {
+	if (open_ui_pos_01.x <= pos.x && open_ui_pos_01.y <= pos.y 
+		&& open_ui_pos_02.x >= pos.x && open_ui_pos_02.y >= pos.y) {
+		return true;
+	}
+
+	return false;
+}
+
+//------------------------------------------------------------------------------------------------------------
+//ダンジョン入場口とマウスのポインタが重なった時に、前回のダンジョンのクリアタイムを表示する
+bool SceneStartMap::CheckDungeonClearTimeOpen(tnl::Vector3 pos)
+{
+	//一番右の山
+	tnl::Vector3 open_ui_pos_01 = { 240,550,0 };
+	tnl::Vector3 open_ui_pos_02 = { 280,600,0 };
+
+
+	if (open_ui_pos_01.x >= pos.x && open_ui_pos_01.y >= pos.y
+		&& open_ui_pos_02.x >= pos.x && open_ui_pos_02.y >= pos.y) {
 		return true;
 	}
 
@@ -146,15 +168,30 @@ void SceneStartMap::Update(float delta_time)
 	tnl::Vector3 pos = SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->GetCharaPos();
 	player_pos_buff = pos;
 
+	//マウスのポジションを取得
+	GetMousePoint(&mouce_x_buff, &mouce_y_buff);
+
 	//ここのチェックを確認しよう
 	//プレイヤーとダンジョンに入るUIを表示させる座標が一致しているか判定
 	if (CheckDungeonInUi(SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->GetCharaPos())) {
 		map_in_ui->MenuOpen();
 		map_in_ui_open = true;
 	}
+	else {
+		map_in_ui_open = false;
+	}
+
+	//マウスのポジションがダンジョンの上に来たら
+	if (CheckDungeonClearTimeOpen(tnl::Vector3(mouce_x_buff, mouce_y_buff,0))) {
+		dungeon_clear_time = true;
+	}
+	else {
+		dungeon_clear_time = false;
+	}
 
 	//ダンジョンに入るかどうかの選択を確認する
 	ActiveKeyCheck(map_in_ui_open);
+
 
 }
 
@@ -175,6 +212,14 @@ void SceneStartMap::Draw()
 	if (map_in_ui_open) {
 		map_in_ui->manage_select_flag = true;
 		map_in_ui->MenuAll();
+	}
+	else {
+
+	}
+
+	if (dungeon_clear_time) {
+		DrawStringEx(260, 600, GetColor(255,0,0), "%d分%d秒", minutes, seconds);
+
 	}
 
 	//プレイヤーの描画

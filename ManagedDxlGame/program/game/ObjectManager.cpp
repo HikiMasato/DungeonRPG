@@ -214,6 +214,9 @@ void ObjectManager::GenerateOrders(Factory::PlayerSpawn now_spawn_, bool is_dung
 			}
 		}
 
+		//クリアアイテムを生成受注を行う関数
+		GenerateClearItem();
+
 		//指定回数実行
 		for (int i = 0; i < GENERATE_ENEMY; i++) {
 			std::string enemy_name = GetRandKindEnemyValue();
@@ -248,8 +251,7 @@ void ObjectManager::GenerateOrders(Factory::PlayerSpawn now_spawn_, bool is_dung
 		}
 
 
-		//クリアアイテムを生成受注を行う関数
-		GenerateClearItem();
+		
 
 		game_manager->CameraReset();
 
@@ -689,14 +691,13 @@ void ObjectManager::GenerateClearItem()
 		);
 
 		//アイテム生成時デバッグ
-		tnl::DebugTrace("\n=================クリアアイテム生成完了====================\n");
+		tnl::DebugTrace("\n=================diamondGenerate====================\n");
 
 	}
 	//それ以外
 	else {
 		//アイテム生成時デバッグ
-		tnl::DebugTrace("\n=================クリアアイテム未生成====================\n");
-		return;
+		tnl::DebugTrace("\n=================diamondnotGenerate====================\n");
 	}
 
 }

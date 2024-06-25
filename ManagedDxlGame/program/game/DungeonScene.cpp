@@ -12,6 +12,7 @@
 #include <random>         
 #include <iostream>  
 #include <variant>
+#include <chrono>
 //-------------------------------------------------------
 //Scene
 #include "SceneBase.h"
@@ -75,8 +76,9 @@ DungeonScene::DungeonScene()
 DungeonScene::~DungeonScene()
 {
 	StopSoundMem(SceneTitle::game_manager->GetSoundManager()->sound_csv[2]);
-
-
+	//オブジェクトが格納されているリストをすべてクリア
+	SceneTitle::game_manager->GetObjectManager()->AllListClear();
+	
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -1602,6 +1604,36 @@ void DungeonScene::ChangeFadeSequence(FadeSequence next_fade)
 	else if (next_fade == FadeSequence::NONE) {
 		tnl::DebugTrace("\nFadeNone\n");
 	}
+}
+
+//------------------------------------------------------------------------------------------------------------
+//クリアタイム時間計測開始関数
+void DungeonScene::ClearTimeCountStart(std::chrono::high_resolution_clock::time_point start_time)
+{
+	start_time = std::chrono::high_resolution_clock::now();
+}
+
+//------------------------------------------------------------------------------------------------------------
+//クリアタイム時間計測終了関数
+std::pair<int, int> DungeonScene::ClearTimeCountEnd(std::chrono::high_resolution_clock::time_point start_time) const
+{
+	auto end_time = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+
+
+	// ミリ秒を秒に変換し、小数点以下2桁で表示
+	//double seconds = duration / 1000.0;
+
+	// ミリ秒を分と秒に変換
+	int total_seconds = duration / 1000;
+	int minutes = total_seconds / 60;
+	int seconds = total_seconds % 60;
+
+	DrawStringEx(570, 700, -1, "%d分%d秒", minutes, seconds);
+	
+	//分と秒の値を返す
+	return std::make_pair(minutes, seconds);	
+
 }
 
 

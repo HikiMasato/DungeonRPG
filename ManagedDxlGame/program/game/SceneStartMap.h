@@ -33,7 +33,8 @@ private:
 	//ダンジョンに入るUIを表示させるかどうかのフラグ
 	bool map_in_ui_open = false;
 	
-	
+	//クリアタイムを表示させるフラグ
+	bool dungeon_clear_time = false;
 	
 
 	//***************************関数*****************************
@@ -44,7 +45,9 @@ private:
 	
 	//ダンジョンに入るUIを表示するチェック関数
 	bool CheckDungeonInUi(tnl::Vector3 pos);
-
+	//ダンジョン入場口とマウスのポインタが重なった時に、前回のダンジョンのクリアタイムを表示する
+	bool CheckDungeonClearTimeOpen(tnl::Vector3 pos);
+	
 	void ActiveKeyCheck(bool open_in);
 
 

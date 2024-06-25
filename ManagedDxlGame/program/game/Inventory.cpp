@@ -78,22 +78,29 @@ void Inventory::AddInventory(std::shared_ptr<Item> item)
 //カーソルの上下移動処理
 void Inventory::CursorMove()
 {
-	//カーソルの上下移動
+	//カーソルの上移動
 	if (tnl::Input::IsKeyDownTrigger(eKeys::KB_UP)) {
+		//アイテム数を取得
 		item_value = GetItemCount();
-		//カーソル移動したときのseを鳴らす
-		game_manager->GetSoundManager()->ChosePlaySystemSound(game_manager->GetSoundManager()->sound_csv[11]);
-		select_cursor = (select_cursor + (item_value - 1)) % item_value;
-	
+		// item_valueが0より大きいことを確認
+		if (item_value > 0) { 
+			//カーソル移動したときのseを鳴らす
+			game_manager->GetSoundManager()->ChosePlaySystemSound(game_manager->GetSoundManager()->sound_csv[11]);
+			select_cursor = (select_cursor + (item_value - 1)) % item_value;
+		}
 	}
-	//下
+	//カーソルの下移動
 	else if (tnl::Input::IsKeyDownTrigger(eKeys::KB_DOWN)) {
+		//アイテム数を取得
 		item_value = GetItemCount();
-		//カーソル移動したときのseを鳴らす
-		game_manager->GetSoundManager()->ChosePlaySystemSound(game_manager->GetSoundManager()->sound_csv[11]);
-		select_cursor = (select_cursor + 1) % item_value;
-
+		// item_valueが0より大きいことを確認
+		if (item_value > 0) { 
+			//カーソル移動したときのseを鳴らす
+			game_manager->GetSoundManager()->ChosePlaySystemSound(game_manager->GetSoundManager()->sound_csv[11]);
+			select_cursor = (select_cursor + 1) % item_value;
+		}
 	}
+
 }
 
 //カーソルの位置を一番上にリセットする関数

@@ -323,19 +323,6 @@ void GameManager::GenerateDungeon(DungeonType dungeontype) {
 	debug_manager->DebugString("\n======================マップチップインスタンス化完了=======================\n");
 
 
-	//プレイヤーがいなければ以下の処理はしない
-	if (object_manager->factory->GetPlayer() == nullptr) {
-		return;
-	}
-	//ポジションを決定
-	object_manager->factory->GetPlayer()->SetCharaPos(SetStartPosition(SetStartPositionType::PLAYER));
-	//ポジションを取得
-	tnl::Vector3 player_pos = object_manager->factory->GetPlayer()->GetCharaPos();
-	
-	map_manager->ChangeRoomVisit(WorldToLocalPos(player_pos));
-	debug_manager->DebugString("\n======================ポジション登録完了======================\n");
-
-
 	CameraReset();
 }
 

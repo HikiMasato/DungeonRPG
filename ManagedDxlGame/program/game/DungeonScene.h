@@ -103,6 +103,11 @@ public:
 	//階層移動中のフェード中に文字を描画する
 	void DrawFadeDesc();
 
+	//クリアタイム時間計測開始関数
+	void ClearTimeCountStart(std::chrono::high_resolution_clock::time_point start_time);
+	//クリアタイム時間計測終了関数
+	std::pair<int, int> ClearTimeCountEnd(std::chrono::high_resolution_clock::time_point start_time) const;
+
 private:
 
 
@@ -192,6 +197,12 @@ private:
 	FadeSequence fade_sequence_type			= FadeSequence::FADEOUT;
 
 	std::shared_ptr<FadeControl> fade_control = nullptr;
+	//描画させるeffectlist
+	std::list<std::shared_ptr<EffectManager>> draw_effect_list;
+
+
+
+	Skill* last_skill = nullptr;
 
 	//デルタタイムを加算する
 	float desc_fade_count = 0;
@@ -201,10 +212,6 @@ private:
 	//ダンジョンのレベル
 	int dungeon_level = 1;//ゲッターを作るほうがいいかな
 
-	Skill* last_skill = nullptr;
-
-	//描画させるeffectlist
-	std::list<std::shared_ptr<EffectManager>> draw_effect_list;
 
 	//敵シーケンスチェンジインターバル
 	const int ENEMYATKINTERVAL = 20;
@@ -362,4 +369,7 @@ private:
 	void ChangeMenuSequence(MenuSequence next_menu);
 	//フェードシーケンスを変更する関数
 	void ChangeFadeSequence(FadeSequence next_fade);
+	
+	
+
 };
