@@ -29,3 +29,19 @@
 #include "GameManager.h"
 #include "MapManager.h"
 #include "SceneManager.h"
+
+
+std::vector<int> SceneBase::minutes ;
+std::vector<int> SceneBase::seconds ;
+std::vector<int> SceneBase::dungeon_level ;
+int SceneBase::max_diamond = 0;
+
+SceneBase::SceneBase() {
+
+	minutes.resize(5);
+	seconds.resize(5);
+	dungeon_level.resize(5);
+
+}
+
+

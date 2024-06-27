@@ -78,7 +78,10 @@ void Player::Update(float delta_time) {
 
 	//デバッグHp変動関数
 	DebugHpFluctuation();
+	DebugAddDiamond();
+	
 	Move();
+
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -250,6 +253,20 @@ bool Player::CheckClearItemNum() const
 }
 
 //------------------------------------------------------------------------------------------------------------
+//プレイヤーが死んでいるか判定
+bool Player::CheckDeathPlayer()
+{
+	//プレイヤーのHPが0以下なら
+	if (GetCharaStetus(Character::Stetus::HP) <= 0) {
+		//0以下なら0に固定(マイナス値に行くと見栄えが悪いため)
+		SetCharaStetus(Character::Stetus::HP, 0);
+		return true;
+	}
+
+	return false;
+}
+
+//------------------------------------------------------------------------------------------------------------
 //必要経験値を増加させる関数
 void Player::NeedUpExp()
 {
@@ -284,4 +301,13 @@ void Player::DebugHpFluctuation()
 		}
 		
 	}
+}
+
+//------------------------------------------------------------------------------------------------------------
+void Player::DebugAddDiamond()
+{
+	if (tnl::Input::IsKeyDownTrigger(eKeys::KB_L)) {
+		SetCharaStetus(Character::Stetus::DIAMOND, 1);
+	}
+	
 }

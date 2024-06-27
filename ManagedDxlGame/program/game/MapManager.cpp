@@ -118,7 +118,12 @@ MapManager::MapManager(int map_width, int map_height, std::vector<int>handles, G
 MapManager::~MapManager()
 {
 	ground.clear();
-
+	visited.clear();
+	allchip.clear();
+	divideArea.clear();
+	dumpDivideArea.clear();
+	divideLine.clear();
+	divideRoom.clear();
 }
 
 //------------------------------------------------------------------------------------------------------------

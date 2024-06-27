@@ -11,7 +11,7 @@ class Factory;
 class MapChip;
 class Player;
 class hm::Camera;
-class MenuWindow;
+class Menu;
 
 class SceneStartMap : public SceneBase {
 public:
@@ -24,7 +24,7 @@ private:
 		
 	//***************************変数*****************************
 	hm::Camera camera;
-	MenuWindow* map_in_ui = nullptr;
+	std::shared_ptr<Menu> map_in_ui = nullptr;
 
 	
 	//スターとマップのプレイヤー座標を保存しておく
@@ -50,7 +50,7 @@ private:
 	
 	void ActiveKeyCheck(bool open_in);
 
-
-
+	//ダンジョンシーンに入る関数
+	void PlayerInDungeon();
 
 };

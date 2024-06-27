@@ -77,8 +77,6 @@ ObjectManager::~ObjectManager()
 	chara_info.clear();
 	AllChipListClear();
 	AllListClear();
-	delete game_manager;
-
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -659,14 +657,15 @@ bool ObjectManager::Probability()
 {
 	// 確率テーブルの例
 	std::map<std::string, double> probabilityTable = {
-		{"生成する", 5},		//5%の確率 true
-		{"生成しない", 95},		//95%の確率 false
+		{"生成する",  10},		//10%の確率 true
+		{"生成しない",90},		//90%の確率 false
 	};
 
 	//アイテム生成時デバッグ
-	tnl::DebugTrace("\n=================確率結果 : %s====================\n", RandomWithProbabilityTable(probabilityTable));
+	tnl::DebugTrace("\n=================確率結果 : %s====================\n", rand_item);
+
 	// 結果を取得
-	return RandomWithProbabilityTable(probabilityTable);
+	return RandomWithProbabilityTable(probabilityTable, check_item);
 
 }
 

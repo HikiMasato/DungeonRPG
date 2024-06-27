@@ -222,7 +222,7 @@ private:
 
 	//確率で出力結果を変更する
 	template <typename TABLE>
-	bool RandomWithProbabilityTable(const TABLE& probabilityTable) {
+	bool RandomWithProbabilityTable(const TABLE& probabilityTable, const std::string& check_item) {
 		// 確率の合計を計算
 		double totalProbability = 0;
 		for (const auto& entry : probabilityTable) {
@@ -245,7 +245,9 @@ private:
 
 		// イテレータを使ってランダムなキーを取得
 		auto it = std::next(probabilityTable.begin(), randomIndex);
+		
 		return it->first == check_item; // キーを返す(bool値で出力 => 生成する : true, 生成しない : false)
+	
 	}
 
 

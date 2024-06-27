@@ -104,9 +104,15 @@ public:
 	void DrawFadeDesc();
 
 	//クリアタイム時間計測開始関数
-	void ClearTimeCountStart(std::chrono::high_resolution_clock::time_point start_time);
+	void ClearTimeCountStart(std::chrono::high_resolution_clock::time_point &start_time);
 	//クリアタイム時間計測終了関数
 	std::pair<int, int> ClearTimeCountEnd(std::chrono::high_resolution_clock::time_point start_time) const;
+
+	//ダンジョンレベルを返す関数
+	int GetDugeonLevel() const {
+		return dungeon_level;
+	}
+
 
 private:
 
@@ -370,6 +376,15 @@ private:
 	//フェードシーケンスを変更する関数
 	void ChangeFadeSequence(FadeSequence next_fade);
 	
-	
+	//ダンジョンから脱出時の処理関数
+	void GetOutDungeon();
 
+	//プレイヤーが死んだ場合の処理
+	//プレイヤーが死んでいるかの判定はプレイヤー自身が返す
+	void CheckDeathPlayer();
+
+	//ダンジョンレベルを一つ上げる関数
+	void AddDungeonLevel(int now_level) {
+		dungeon_level += now_level;
+	}
 };

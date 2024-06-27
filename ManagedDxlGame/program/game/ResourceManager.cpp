@@ -42,7 +42,7 @@ ResourceManager::ResourceManager(GameManager* game_manager_) {
 	dungeon_handls.resize(3);
 	effect_graphics.resize(15);
 	icon_handles.resize(13);
-	sound_handle.resize(16);
+	sound_handle.resize(30);
 	item_handle.resize(11);
 	keyboard_handle.resize(12);
 

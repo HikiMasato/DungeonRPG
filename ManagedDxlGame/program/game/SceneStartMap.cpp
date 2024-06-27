@@ -93,12 +93,8 @@ void SceneStartMap::InitSceneStartMap()
 	//スタートマップにプレイヤーを生成
 	SceneTitle::game_manager->GetObjectManager()->GenerateOrders(SceneTitle::game_manager->GetObjectManager()->factory->GetPlayerSpawn());
 
-	//メニューウィンドウを生成
-	MenuWindow::MenuType_t* menu_usable = new MenuWindow::MenuType_t[]{
-		{310,330,"ダンジョンに入りますか?",0},
-		{310,360,"やめる",2}
-	};
-	map_in_ui = new MenuWindow(300, 300, 230, 150, "using_graphics/window_ui.png", menu_usable, 2, 0.15);
+	
+	map_in_ui = std::make_shared<Menu>(300, 350, 300, 100, "using_graphics/window_ui.png");
 
 
 
@@ -126,11 +122,11 @@ bool SceneStartMap::CheckDungeonInUi(tnl::Vector3 pos)
 bool SceneStartMap::CheckDungeonClearTimeOpen(tnl::Vector3 pos)
 {
 	//一番右の山
-	tnl::Vector3 open_ui_pos_01 = { 240,550,0 };
-	tnl::Vector3 open_ui_pos_02 = { 280,600,0 };
+	tnl::Vector3 open_ui_pos_01 = { 230,350,0 };
+	tnl::Vector3 open_ui_pos_02 = { 280,400,0 };
 
 
-	if (open_ui_pos_01.x >= pos.x && open_ui_pos_01.y >= pos.y
+	if (open_ui_pos_01.x <= pos.x && open_ui_pos_01.y <= pos.y
 		&& open_ui_pos_02.x >= pos.x && open_ui_pos_02.y >= pos.y) {
 		return true;
 	}
@@ -139,22 +135,11 @@ bool SceneStartMap::CheckDungeonClearTimeOpen(tnl::Vector3 pos)
 }
 
 //------------------------------------------------------------------------------------------------------------
-//ダンジョンに入るUIがオープン状態の場合にキーチェックする
-void SceneStartMap::ActiveKeyCheck(bool open_in)
+//プレイヤーがダンジョンに入る関数
+void SceneStartMap::PlayerInDungeon()
 {
-	//ダンジョンに入るUiフラグが下りていたらreturn
-	if (!open_in)return;
-	//入るを押した場合
-	if (map_in_ui->select_value == 0 && tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
-		auto mgr = SceneManager::GetInstance();
-		mgr->ChangeScene(new ScenePlay);
-	}
-	//やめるを押した場合
-	else if (map_in_ui->select_value == 1 && tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
-		map_in_ui->manage_select_flag = false;
-		map_in_ui_open = false;
-	}
-
+	auto mgr = SceneManager::GetInstance();
+	mgr->ChangeScene(new ScenePlay);
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -174,8 +159,14 @@ void SceneStartMap::Update(float delta_time)
 	//ここのチェックを確認しよう
 	//プレイヤーとダンジョンに入るUIを表示させる座標が一致しているか判定
 	if (CheckDungeonInUi(SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->GetCharaPos())) {
-		map_in_ui->MenuOpen();
+		
+		//ダンジョン潜入時SE
+		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[22]);
+
 		map_in_ui_open = true;
+		//ダンジョンに入る
+		PlayerInDungeon();
+
 	}
 	else {
 		map_in_ui_open = false;
@@ -188,10 +179,6 @@ void SceneStartMap::Update(float delta_time)
 	else {
 		dungeon_clear_time = false;
 	}
-
-	//ダンジョンに入るかどうかの選択を確認する
-	ActiveKeyCheck(map_in_ui_open);
-
 
 }
 
@@ -208,22 +195,30 @@ void SceneStartMap::Draw()
 	for (auto second_chip : SceneTitle::game_manager->GetObjectManager()->GetStartMapSecondChipList()) {
 		second_chip->StartMapDraw(camera);
 	}
+	
+	//プレイヤーの描画
+	SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->Draw(camera);
+
 	//ダンジョンに入る時のUI
 	if (map_in_ui_open) {
-		map_in_ui->manage_select_flag = true;
-		map_in_ui->MenuAll();
 	}
 	else {
 
 	}
 
 	if (dungeon_clear_time) {
-		DrawStringEx(260, 600, GetColor(255,0,0), "%d分%d秒", minutes, seconds);
+
+		map_in_ui->MenuDraw();
+		DrawStringEx(map_in_ui->menu_x + 10, map_in_ui->menu_y + 10, GetColor(255,255,255), "前回の潜入時間 : %d分%d秒", GetMinutes()[0], GetSeconds()[0]);
+		DrawStringEx(map_in_ui->menu_x + 10, map_in_ui->menu_y + 30, GetColor(255,255,255), "前回の到達階層 : %d階", GetDungeonLevel()[0]);
+		DrawStringEx(map_in_ui->menu_x + 10, map_in_ui->menu_y + 50, GetColor(255,255,255), "ダイアモンドの最大取得数 : %d個", GetMaxDiamondNum());
+
+	}
+	else {
 
 	}
 
-	//プレイヤーの描画
-	SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->Draw(camera);
+	
 }
 
 

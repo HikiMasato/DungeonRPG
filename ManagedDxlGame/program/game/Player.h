@@ -47,6 +47,9 @@ public:
 	//満たしていればtrue : 満たしていなければfalse
 	bool CheckClearItemNum() const;
 
+	//プレイヤーが死んでいるか判定
+	bool CheckDeathPlayer();
+
 	//================ゲッター===================
 
 	ObjectType GetObjectType() const override {
@@ -116,4 +119,6 @@ private:
 
 	//debug用にHpの増減処理
 	void DebugHpFluctuation();
+
+	void DebugAddDiamond();
 };

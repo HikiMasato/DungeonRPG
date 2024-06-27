@@ -140,6 +140,11 @@ void DungeonScene::Update(float delta_time)
 				wheely = 140;
 			}
 		}
+
+
+		{//プレイヤー死亡チェック
+			CheckDeathPlayer();
+		}
 	}
 	
 }
@@ -456,7 +461,7 @@ void DungeonScene::UIDraw()
 
 		goal_ui->MenuDraw();
 		//目的
-		DrawStringEx(goal_ui->menu_x + 10, goal_ui->menu_y + 10, -1, "ダイアモンドを3つ集めろ");
+		DrawStringEx(goal_ui->menu_x + 10, goal_ui->menu_y + 10, -1, "ダイアモンドを3つ集めて脱出しろ!");
 	
 	}
 }
@@ -657,6 +662,9 @@ bool DungeonScene::SeqCheckDeadEnemy(const float delta_time)
 	for (auto& enemy : SceneTitle::game_manager->GetObjectManager()->GetAliveEnemyList()) {
 		//敵の生存リストにHpが0以下の敵がいる場合、その敵が持つalivefalgを下げる
 		if (enemy->GetCharaStetus(Character::Stetus::HP) <= 0) {
+			
+			//ダンジョン潜入時SE
+			SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[19]);
 			//もしレベルアップしたら
 			//AddExp関数はレベルが上がるとtrueが返る
 			if (SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->AddExp(enemy->GetCharaStetus(Character::Stetus::EXP))) {
@@ -796,7 +804,7 @@ void DungeonScene::CheckExtraOnTile()
 	if (SceneTitle::game_manager->GetMapChip(player_pos) == MapChip::MapType::STAIRS) {
 
 		if (tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
-			SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[10]);
+			SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[22]);
 
 			//プレイヤーの現在座標を取得
 			tnl::Vector3 pos = SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->GetCharaPos();
@@ -835,7 +843,8 @@ void DungeonScene::MoveLevel(int add_level)
 	SceneTitle::game_manager->GetCollision()->ClearIntersectList();
 	SceneTitle::game_manager->GetCollision()->ClearIntersectMap();
 
-	dungeon_level += add_level;
+	//階層レベルを上げる
+	AddDungeonLevel(add_level);
 
 	//ダンジョン再生成
 	SceneTitle::game_manager->DungeonReCreate();
@@ -843,6 +852,13 @@ void DungeonScene::MoveLevel(int add_level)
 
 	//オブジェクト生成
 	SceneTitle::game_manager->GetObjectManager()->GenerateOrders(Factory::PlayerSpawn::DUNGEON,true);
+
+	//ポジション決定
+	SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->SetCharaPos(SceneTitle::game_manager->SetStartPosition(GameManager::SetStartPositionType::PLAYER));
+	//ミニマップにポジション反映
+	SceneTitle::game_manager->GetMapManager()->ChangeRoomVisit(SceneTitle::game_manager->WorldToLocalPos(SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->GetCharaPos()));
+	//カメラ中央にプレイヤー設定
+	SceneTitle::game_manager->CameraReset();
 
 	//階層移動時に全キャラクター強化
 	SceneTitle::game_manager->GetObjectManager()->RainForceCharaStetus();
@@ -917,6 +933,7 @@ bool DungeonScene::SeqFirstMenu(const float delta_time)
 	//first_menuの0番目を選択した状態でenterを押したとき
 	//インベントリを開く
 	if (now_draw_uiwin == NowDrawUiWindow::OPTION && first_menu->select_value == 0 && tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
+		
 		//選択時のSE
 		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[10]);
 		first_menu->manage_select_flag = false;
@@ -930,6 +947,7 @@ bool DungeonScene::SeqFirstMenu(const float delta_time)
 	//first_menuの2番目を選択した状態でenterを押したとき
 	//閉じるでメニューを閉じる
 	if (now_draw_uiwin == NowDrawUiWindow::OPTION && first_menu->select_value == 2 && tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
+		
 		//選択時のSE
 		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[16]);
 
@@ -946,28 +964,28 @@ bool DungeonScene::SeqFirstMenu(const float delta_time)
 	//プレイヤークラスに作ったダイア数チェック関数で判定してtrueが返ってくればダンジョン脱出ができるようになる仕組みにする 
 	//first_menuの3番目を選択した状態でenterを押したとき
 	//ダンジョンを脱出する
-	if (now_draw_uiwin == NowDrawUiWindow::OPTION && first_menu->select_value == 3 && tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
+	if (now_draw_uiwin == NowDrawUiWindow::OPTION 
+		&& first_menu->select_value == 3 
+		&& SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->CheckClearItemNum() 
+		&& tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
+
 		//選択時のSE
 		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[16]);
+		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[22]);
 
 		first_menu->menu_alive = false;
 		now_draw_uiwin = NowDrawUiWindow::NONE;
 		
+		//MapManagerを開放
+		GetOutDungeon();
 
-		auto mgr = SceneManager::GetInstance();
-		mgr->ChangeScene(new SceneStartMap);
-		
-
-		tnl::DebugTrace("\n==========================Dungeon Out=========================\n");
-
-		//これ以上前のシーケンスがないので自分自身に戻る
-		ChangeMenuSequence(MenuSequence::NONE);
-		return false;
+		return true;
 
 	}
 
 	//Escキーでもfistmenuを閉じれる
 	if (now_draw_uiwin == NowDrawUiWindow::OPTION && tnl::Input::IsKeyDownTrigger(eKeys::KB_ESCAPE)) {
+		
 		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[16]);
 
 		first_menu->menu_alive = false;
@@ -1160,6 +1178,9 @@ void DungeonScene::ItemUse(int inventory_page,std::string name)
 
 	//使用したアイテムによって変更するステータスを条件分岐する(ここはもう少し工夫したい)
 	if (name == "リンゴ") {
+
+		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[23]);
+
 		//回復量
 		int move_hp = item_buff->GetItemStetusEfficacy();
 		
@@ -1179,6 +1200,9 @@ void DungeonScene::ItemUse(int inventory_page,std::string name)
 		
 	}
 	if (name == "薬草") {
+
+		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[24]);
+
 		int move_hp = item_buff->GetItemStetusEfficacy();
 		//プレイヤーのHPが最大HP以下なら
 		if (max_player_hp > now_player_hp) {
@@ -1194,6 +1218,9 @@ void DungeonScene::ItemUse(int inventory_page,std::string name)
 		
 	}
 	if (name == "防御力") {
+
+		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[25]);
+
 		int move_defence = item_buff->GetItemStetusEfficacy();
 		SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->SetAffectToCharaStetus(Character::Stetus::DEF, move_defence);
 		SceneTitle::game_manager->EraseItemFromInventory(inventory_page);
@@ -1206,12 +1233,14 @@ void DungeonScene::ItemUse(int inventory_page,std::string name)
 		IsInventoryDelete();
 	}
 	if (name == "Gold") {
+
+		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[20]);
+
 		int move_gold = item_buff->GetItemStetusEfficacy();
 		SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->SetAffectToCharaStetus(Character::Stetus::GOLD, move_gold);
 		SceneTitle::game_manager->EraseItemFromInventory(inventory_page);
 		IsInventoryDelete();
 	}
-	//(WIP)
 	if (name == "ドロップアイテム") {
 		//ランダムでアイテムの名前を取得する
 		std::string item_name = SceneTitle::game_manager->GetObjectManager()->GenerateShopItem();
@@ -1221,8 +1250,10 @@ void DungeonScene::ItemUse(int inventory_page,std::string name)
 		SceneTitle::game_manager->EraseItemFromInventory(inventory_page);
 		IsInventoryDelete();
 	}
-	//(WIP)
 	if (name == "ポーション") {
+
+		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[18]);
+
 		//回復量
 		int move_potion_hp = item_buff->GetItemStetusEfficacy();
 		//攻撃力上昇量
@@ -1249,6 +1280,9 @@ void DungeonScene::ItemUse(int inventory_page,std::string name)
 
 	}
 	if (name == "攻撃力") {
+
+		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[18]);
+
 		int move_potion = item_buff->GetItemStetusEfficacy();
 		SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->SetAffectToCharaStetus(Character::Stetus::ATK, move_potion);
 		SceneTitle::game_manager->EraseItemFromInventory(inventory_page);
@@ -1607,8 +1641,56 @@ void DungeonScene::ChangeFadeSequence(FadeSequence next_fade)
 }
 
 //------------------------------------------------------------------------------------------------------------
+//ダンジョンから脱出時の処理関数
+void DungeonScene::GetOutDungeon()
+{
+	//MapManagerを解放
+	SceneTitle::game_manager->DeleteMapManager();
+	//プレイヤー以外のオブジェクトをすべて削除	
+	SceneTitle::game_manager->GetObjectManager()->AllListClear(false);
+	SceneTitle::game_manager->GetObjectManager()->AllChipListClear();
+
+	//当たり判定のペアリストをすべて削除する
+	SceneTitle::game_manager->GetCollision()->ClearIntersectList();
+	SceneTitle::game_manager->GetCollision()->ClearIntersectMap();
+
+	auto mgr = SceneManager::GetInstance();
+	mgr->ChangeScene(new SceneStartMap);
+
+
+	tnl::DebugTrace("\n==========================Dungeon Out=========================\n");
+
+}
+
+//------------------------------------------------------------------------------------------------------------
+//プレイヤーが死んだ場合の処理
+//プレイヤーが死んでいるかの判定はプレイヤー自身が返す
+void DungeonScene::CheckDeathPlayer()
+{
+	//プレイヤー自身が死んだ判定を返した場合
+	if (SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->CheckDeathPlayer()) {
+		//死亡時SE
+		SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[19]);
+
+		//MapManagerを解放
+		SceneTitle::game_manager->DeleteMapManager();
+		//プレイヤー以外のオブジェクトをすべて削除	
+		SceneTitle::game_manager->GetObjectManager()->AllListClear(false);
+		SceneTitle::game_manager->GetObjectManager()->AllChipListClear();
+
+		//当たり判定のペアリストをすべて削除する
+		SceneTitle::game_manager->GetCollision()->ClearIntersectList();
+		SceneTitle::game_manager->GetCollision()->ClearIntersectMap();
+
+		auto mgr = SceneManager::GetInstance();
+		mgr->ChangeScene(new SceneStartMap);
+	}
+
+}
+
+//------------------------------------------------------------------------------------------------------------
 //クリアタイム時間計測開始関数
-void DungeonScene::ClearTimeCountStart(std::chrono::high_resolution_clock::time_point start_time)
+void DungeonScene::ClearTimeCountStart(std::chrono::high_resolution_clock::time_point &start_time)
 {
 	start_time = std::chrono::high_resolution_clock::now();
 }
@@ -1629,7 +1711,7 @@ std::pair<int, int> DungeonScene::ClearTimeCountEnd(std::chrono::high_resolution
 	int minutes = total_seconds / 60;
 	int seconds = total_seconds % 60;
 
-	DrawStringEx(570, 700, -1, "%d分%d秒", minutes, seconds);
+	tnl::DebugTrace("%d分%d秒", minutes, seconds);
 	
 	//分と秒の値を返す
 	return std::make_pair(minutes, seconds);	

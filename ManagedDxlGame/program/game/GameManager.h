@@ -73,6 +73,10 @@ public:
 	void InitGameManager();
 
 	void DungeonReCreate();
+
+	//ダンジョン脱出時に呼び出す関数
+	void DeleteMapManager();
+
 	inline void ForceInventoryChange(int& value) {
 		value--;
 		is_delete_invantory = false;

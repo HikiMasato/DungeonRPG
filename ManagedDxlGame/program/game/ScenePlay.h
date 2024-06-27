@@ -2,6 +2,7 @@
 
 class SceneBase;
 class DungeonScene;
+class ObjectManager;
 
 class ScenePlay : public SceneBase {
 public:
@@ -12,6 +13,6 @@ public:
 	void Update(float delta_time) override;
 	void Draw() override;
 	
-	DungeonScene* seq_dungeon = nullptr;
+	std::shared_ptr<DungeonScene> seq_dungeon = nullptr;
 };
 

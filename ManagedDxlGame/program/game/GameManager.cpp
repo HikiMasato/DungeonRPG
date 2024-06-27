@@ -74,25 +74,38 @@ GameManager::~GameManager()
 		}
 	}
 	InitGraph();
+
+	delete debug_manager;
+	debug_manager = nullptr;
+
+	map_manager.reset();
+	waypoint.clear();
+
+
 }
 
 //------------------------------------------------------------------------------------------------------------
 //毎フレーム実行
 void GameManager::update(float delta_time) {
 
-	object_manager->Update(delta_time);
+	if (map_manager) {
+		object_manager->Update(delta_time);
+	}
+	
 }
 
 //------------------------------------------------------------------------------------------------------------
 //描画関数
 void GameManager::Draw() {
-	//全体のマップを描画
-	map_manager->MapDraw(object_manager->factory->camera, now_gh_size, ratio);
-	//ミニマップの描画
-	map_manager->MiniMapDraw(object_manager->factory->camera);
 	
-	object_manager->Draw();
+	if (map_manager) {
+		//全体のマップを描画
+		map_manager->MapDraw(object_manager->factory->camera, now_gh_size, ratio);
+		//ミニマップの描画
+		map_manager->MiniMapDraw(object_manager->factory->camera);
 
+		object_manager->Draw();
+	}
 	
 }
  
@@ -128,6 +141,16 @@ void GameManager::DungeonReCreate()
 	waypoint.clear();
 	//ダンジョンを生成開始
 	GenerateDungeon(nowdungeon);
+}
+
+//------------------------------------------------------------------------------------------------------------
+//ダンジョン脱出時に呼び出す関数
+void GameManager::DeleteMapManager()
+{
+	if (map_manager != nullptr) {
+		map_manager.reset();
+	}
+	waypoint.clear();
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -195,19 +218,24 @@ void GameManager::EraseItemFromInventory(const int now_inventory_id)
 	//選択中のアイテムは消去しているのでカーソルを一つ上に移動
 	inventories[now_inventory_id]->SetCursorValue(-1);
 
+	//eraseするアイテムがいる場所が今いるインベントリが最後のインベントリではない場合
 	if (now_inventory_id != inventory_value) {
 		int check_inv_value = now_inventory_id;
 		while (1) {
 
-			if (inventories[check_inv_value + 1]->inventory_list.empty())break;
+			if (inventories[check_inv_value + 1]->inventory_list.empty()) {
+				break;
+			}
 			//次のページの最初のアイテムをコピーして消したアイテムを末尾に追加する
 			auto item = inventories[check_inv_value + 1]->inventory_list.begin();
 			//アイテムを追加
 			inventories[check_inv_value]->inventory_list.emplace_back((*item));
 			//次のページの最初のアイテムをpopする
-			inventories[check_inv_value]->inventory_list.pop_front();
+			inventories[check_inv_value + 1]->inventory_list.pop_front();
 			//インベントリの最後のページにたどり着いたらbreak.
-			if (check_inv_value + 1 == inventory_value)break;
+			if (check_inv_value + 1 == inventory_value) {
+				break;
+			}
 			check_inv_value++;
 		}
 	}
@@ -217,7 +245,7 @@ void GameManager::EraseItemFromInventory(const int now_inventory_id)
 		//これ以上前のページがないため
 		inventories[now_inventory_id]->SetItemValue(-1);
 	}
-	//何もアイテムが鳴インベントリを削除する
+	//空のインベントリを削除する
 	if (inventories[now_inventory_id]->inventory_list.empty()) {
 		if (inventory_value != 0) {
 			delete inventories[now_inventory_id];
@@ -231,9 +259,13 @@ void GameManager::EraseItemFromInventory(const int now_inventory_id)
 		}
 	}
 	//インベントリの削除フラグが立っていたらreturn
-	if (is_delete_invantory)return;
+	if (is_delete_invantory) {
+		return;
+	}
 	//カーソルの位置を一番上にリセット
-	if (inventories[now_inventory_id]->inventory_list.empty())inventories[now_inventory_id]->CursorReset();
+	if (inventories[now_inventory_id]->inventory_list.empty()) {
+		inventories[now_inventory_id]->CursorReset();
+	}
 
 }
 
@@ -273,17 +305,23 @@ std::vector<int>& GameManager::GetGraphicsHandles(DungeonType dungeontype) const
 //マップチップの情報を取得する関数
 int GameManager::GetMapChip(tnl::Vector3 mappos) const
 {
-	return map_manager->GetChip(mappos.x,mappos.y);
+	if (map_manager) {
+
+		return map_manager->GetChip(mappos.x, mappos.y);
+	}
+	else {
+		tnl::DebugTrace("\n======map_managerが存在しない======\n");
+		return 0;
+	}
+	
 }
 
 //------------------------------------------------------------------------------------------------------------
 //ダンジョンの生成(プレイヤーの生成も行っている)
 void GameManager::GenerateDungeon(DungeonType dungeontype) {
 	
-	//MapManagerがdeleteされていなければ一度deleteする(Mapを一から作り直す)
-	if (map_manager != nullptr) {
-		map_manager.reset();
-	}
+	//(Mapを一から作り直す)
+	map_manager.reset();
 
 	waypoint.clear();
 	
@@ -733,8 +771,14 @@ bool GameManager::CanDrawMiniMap(tnl::Vector3 localpos) {
 //MiniMapの更新
 void GameManager::RefreshMiniMap(tnl::Vector3 localpos) {
 
-	map_manager->ChangeRoomVisit(localpos);
-	map_manager->ChangeWayVisit(localpos);
+	if (map_manager) {
+		map_manager->ChangeRoomVisit(localpos);
+		map_manager->ChangeWayVisit(localpos);
+	}
+	else {
+		tnl::DebugTrace("\n======map_mapanagerが存在しない=======\n");
+	}
+	
 }
 
 //------------------------------------------------------------------------------------------------------------

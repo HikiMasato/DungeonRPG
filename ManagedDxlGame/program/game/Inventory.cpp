@@ -66,7 +66,10 @@ Inventory::~Inventory()
 void Inventory::AddInventory(std::shared_ptr<Item> item)
 {
 	//現在のインベントリに入る最大数(max_inventoryと変数化したほうがいいかも)
-	if (inventory_list.size() >= 10)return;
+	if (inventory_list.size() >= 10) {
+		return;
+	}
+	
 	//インベントリにアイテムを追加
 	inventory_list.emplace_back(item);
 	//アイテム数も追加
