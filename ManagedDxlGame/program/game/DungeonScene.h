@@ -387,4 +387,8 @@ private:
 	void AddDungeonLevel(int now_level) {
 		dungeon_level += now_level;
 	}
+	
+	//ドラッグ&ドロップ処理
+	void DragAndDrop();
+
 };

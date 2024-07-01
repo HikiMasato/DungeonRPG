@@ -218,7 +218,7 @@ void DungeonScene::InitDungeonScene()
 	inventory		 = std::make_shared<Menu>(380, 220, 440, 330, "using_graphics/window_ui.png");
 	desc			 = std::make_shared<Menu>(820, 400, 300, 150, "using_graphics/window_ui.png");
 
-	dungeon_level_ui = std::make_shared<Menu>(400, 400, 200, 200, "using_graphics/window_ui.png");
+	dungeon_level_ui = std::make_shared<Menu>(400, 400, 250, 200, "using_graphics/window_ui.png");
 
 	shop_ui			 = std::make_shared<Menu>(400, 400, 200, 200, "using_graphics/window_ui.png");
 	shop_inve_ui	 = std::make_shared<Menu>(410,120,320,340, "using_graphics/window_ui.png");
@@ -411,8 +411,8 @@ void DungeonScene::UIDraw()
 
 	}
 	
-	//階段に乗ってる場合
-	if (SceneTitle::game_manager->GetMapChip(player_pos) == MapChip::MapType::STAIRS) {
+	//階段に乗ってる場合で、インベントリを開いていなければ
+	if (SceneTitle::game_manager->GetMapChip(player_pos) == MapChip::MapType::STAIRS && now_menu_type != MenuSequence::INVENTORY_OPEN && now_menu_type != MenuSequence::INVENTORY_USE) {
 		dungeon_level_ui->MenuDraw();
 
 		DrawStringEx(dungeon_level_ui->menu_x + 50, dungeon_level_ui->menu_y + 60, -1, "階段を見つけた");
@@ -424,7 +424,7 @@ void DungeonScene::UIDraw()
 	}
 
 	//ショップに乗ってる場合
-	if (SceneTitle::game_manager->GetMapChip(player_pos) == MapChip::MapType::SHOP && !now_shop_in) {
+	if (SceneTitle::game_manager->GetMapChip(player_pos) == MapChip::MapType::SHOP && !now_shop_in && now_menu_type != MenuSequence::INVENTORY_OPEN && now_menu_type != MenuSequence::INVENTORY_USE) {
 		shop_ui->MenuDraw();
 
 		DrawStringEx(dungeon_level_ui->menu_x + 50, dungeon_level_ui->menu_y + 60, -1, "ショップを見つけた");
@@ -504,13 +504,31 @@ bool DungeonScene::ActiveSkillCheck(const float delta_time)
 
 	}
 	
+	//=============ドラッグ&ドロップ=============
+	{
+		DragAndDrop(); 
+	}
+	
+	
+	return false;
 
+	
+}
+
+//------------------------------------------------------------------------------------------------------------
+//ドラッグ&ドロップ処理
+void DungeonScene::DragAndDrop()
+{
 	//-----------------------------------------------------
 	// アイコンの半径
 	const int icon_r = 25;
 	// アイコンの座標を配列で管理する
 	int slot_icon_x[ICON_NUM] = { base_skill_set_pos.x + 45, base_skill_set_pos.x + 45, base_skill_set_pos.x + 45, base_skill_set_pos.x + 45, base_skill_set_pos.x + 45 };
 	int slot_icon_y[ICON_NUM] = { base_skill_set_pos.y, base_skill_set_pos.y + 70, base_skill_set_pos.y + 140, base_skill_set_pos.y + 210, base_skill_set_pos.y + 280 };
+
+
+
+
 
 	// マウスの座標とアイコンの座標の差が半径以下ならクリックされたと判定する
 	for (int i = 0; i < ICON_NUM; i++) {
@@ -519,7 +537,7 @@ bool DungeonScene::ActiveSkillCheck(const float delta_time)
 			if (tnl::Input::IsMouseTrigger(tnl::Input::eMouseTrigger::OUT_RIGHT)) {
 				now_draw_uiwin = NowDrawUiWindow::SKILL;
 			}
-			
+
 		}
 		//スロットアイコン以外の場所をクリックでスキルウィンドウを消す
 		if (abs(mouce_x - slot_icon_x[i]) >= icon_r && abs(mouce_y - slot_icon_y[i]) >= icon_r) {
@@ -530,8 +548,8 @@ bool DungeonScene::ActiveSkillCheck(const float delta_time)
 
 		}
 	}
-	
-	
+
+
 
 	///---------------------------------------------------------------
 	///			　　**********drag&drop処理************			   ///
@@ -540,14 +558,19 @@ bool DungeonScene::ActiveSkillCheck(const float delta_time)
 	for (int i = 0; i < ICON_NUM; i++) {
 		dist_sq[i] = (mouce_x - icon_x[i]) * (mouce_x - icon_x[i]) + (mouce_y - icon_y[i]) * (mouce_y - icon_y[i]);
 	}
+
+
+
 	// マウスが左ボタンで押されたとき
 	if (tnl::Input::IsMouseDown(tnl::Input::eMouse::LEFT))
 	{
 		// マウスが押されたかどうかを記録
 		mouse_down = true;
 		dropped = false;
-		// マウスが画像の範囲内で押されたとき
+
 		for (int i = 0; i < ICON_NUM; i++) {
+
+			// マウスが画像の範囲内で押されたとき
 			if (dist_sq[i] <= icon_r * icon_r) {
 				// マウスがドラッグ中かどうかを記録
 				mouse_drag = true;
@@ -556,10 +579,9 @@ bool DungeonScene::ActiveSkillCheck(const float delta_time)
 				break;
 			}
 		}
-		
-
 	}
-	
+
+
 	// マウスが左ボタンを離したとき
 	else if (tnl::Input::IsMouseTrigger(tnl::Input::eMouseTrigger::OUT_LEFT))
 	{
@@ -576,8 +598,11 @@ bool DungeonScene::ActiveSkillCheck(const float delta_time)
 
 			// アイコンの中心がスキルセットの範囲内にあるかどうかをチェックする
 			if (abs(mouce_x - slot_icon_x[i]) <= icon_r && abs(mouce_y - slot_icon_y[i]) <= icon_r) {
-				//スロットにアイコンをセットする音を再生
+				
 				skill_set_index[i] = icon_handle[clicked_icon];
+
+				//スキルセット時のSE再生
+				//スロットにアイコンをセットする音を再生
 				SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[14]);
 
 				// クリックされたアイコンのインデックスを選択済み配列に格納
@@ -585,28 +610,29 @@ bool DungeonScene::ActiveSkillCheck(const float delta_time)
 				//セットしたスロットをtureに変更する
 				//i + 1はキー入力が6つあり、スロットは5つなので数を合わせるため(通常攻撃のキー入力があるため + 1加算させ,ずれを修正)
 				SetDragSet(i + 1, true);
+
 				break;
 
 			}
-			
 
+			//範囲外な時
+			/*if (abs(mouce_x - slot_icon_x[i]) >= icon_r && abs(mouce_y - slot_icon_y[i]) >= icon_r) {
+				DrawRotaGraph()
+			}*/
 		}
-		
-		
 	}
 
 	//セットされたスキルをすべてリセットする
 	if (tnl::Input::IsKeyDownTrigger(eKeys::KB_X)) {
+
 		for (int i = 0; i < ICON_NUM; i++) {
 			ResetDragSetIcon(i);
 		}
 	}
-	
+
 	// マウスカーソルの位置を画面に表示する
 	//DrawFormatString(0, 0, GetColor(255, 255, 255), "X: %d, Y: %d", mouce_x, mouce_y);
-	return false;
 
-	
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -803,7 +829,8 @@ void DungeonScene::CheckExtraOnTile()
 	//もし階段の上にいたら
 	if (SceneTitle::game_manager->GetMapChip(player_pos) == MapChip::MapType::STAIRS) {
 
-		if (tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
+		//インベントリを開いた状態でEnterキーを押したら
+		if (tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN) && now_menu_type != MenuSequence::INVENTORY_OPEN && now_menu_type != MenuSequence::INVENTORY_USE) {
 			SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[22]);
 
 			//プレイヤーの現在座標を取得
@@ -818,7 +845,8 @@ void DungeonScene::CheckExtraOnTile()
 	//もしショップの上にいたら
 	if (SceneTitle::game_manager->GetMapChip(player_pos) == MapChip::MapType::SHOP) {
 
-		if (tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN)) {
+		//インベントリを開いた状態でEnterキーを押したら
+		if (tnl::Input::IsKeyDownTrigger(eKeys::KB_RETURN) && now_menu_type != MenuSequence::INVENTORY_OPEN && now_menu_type != MenuSequence::INVENTORY_USE) {
 			//ショップ内フラグを立てる
 			now_shop_in = true;
 			//表示UIをSHOPに変更
@@ -1248,6 +1276,7 @@ void DungeonScene::ItemUse(int inventory_page,std::string name)
 		SceneTitle::game_manager->AddItemToInventory(item_name, SceneTitle::game_manager->GetInventorys(), shop_page);
 		
 		SceneTitle::game_manager->EraseItemFromInventory(inventory_page);
+
 		IsInventoryDelete();
 	}
 	if (name == "ポーション") {
@@ -1426,13 +1455,13 @@ bool DungeonScene::SeqBuyInStores(const float delta_time)
 	}
 
 	//ページ内のアイテムが空ならreturn
-	if (shop_pages[draw_shop_page]->inventory_list.empty()) {
+	/*if (shop_pages[draw_shop_page]->inventory_list.empty()) {
 		
 		now_draw_uiwin = NowDrawUiWindow::NONE;
 		now_shop_in = false;
 
 		return true;
-	}
+	}*/
 
 	//ショップアイテム内の選択移動
 	shop_pages[draw_shop_page]->CursorMove();
