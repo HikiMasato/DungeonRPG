@@ -31,7 +31,7 @@ public:
 	
 
 	void Update(float delta_time) override;
-
+	
 	//ƒvƒŒƒCƒ„[ˆÚ“®
 	void Move();
 

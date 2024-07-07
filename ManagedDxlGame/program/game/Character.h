@@ -24,7 +24,8 @@ public:
 		GOLD,
 		DIAMOND,
 		EXP,
-		LEVEL
+		LEVEL,
+		MAXHP
 	};
 
 	
@@ -32,7 +33,7 @@ public:
 	void Update(float delta_time)override;
 
 	//キャラクターの描画
-	void Draw(const hm::Camera& camera)override;
+	void Draw(ObjectType object_type, const hm::Camera& camera)override;
 
 	//アニメーションを実行
 	void Animation(int* grapharray, int speed, int maxindex, int& drawph);
@@ -91,7 +92,7 @@ public:
 	int GetCharaExp() const {
 		return chara_exp;
 	}
-
+	
 	//--------------------------------------------------------------------------------------------------
 	//キャラステータスのセッター
 	
@@ -148,7 +149,7 @@ public:
 	}
 	
 	//キャラのHpbar
-	void DrawHpbarCharactor(int hp, const tnl::Vector3& pos);
+	void DrawHpbarCharactor(int max_hp, int hp, const tnl::Vector3& pos);
 
 	//キャラチップのインデックス
 	int chra_chip_index = 0;
@@ -173,7 +174,10 @@ private:
 
 
 	//=================stetus====================== 
-	 
+	
+	//キャラのmaxhp
+	int chara_max_hp;
+
 	//キャラhp
 	int chara_hp;
 	//キャラmp

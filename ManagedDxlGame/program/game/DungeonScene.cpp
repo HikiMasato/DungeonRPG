@@ -276,7 +276,7 @@ void DungeonScene::UIDraw()
 			DrawStringEx(hpbar_postion.x, hpbar_postion.y - 20, GetColor(255, 255, 255), "LEVEL %d", SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->GetCharaStetus(Character::Stetus::LEVEL));
 		}
 		{//hp
-			SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->DrawHpbarCharactor(SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->GetCharaStetus(Character::Stetus::HP), { hpbar_postion.x, hpbar_postion.y + 20,0 });
+			SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->DrawHpbarCharactor(SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->GetCharaStetus(Character::Stetus::MAXHP), SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->GetCharaStetus(Character::Stetus::HP), { hpbar_postion.x, hpbar_postion.y + 20,0 });
 			DrawRotaGraph(hpbar_postion.x - 20, hpbar_postion.y + 25, 1.0f, 0, icon_list[11], true);
 			DrawStringEx(hpbar_postion.x , hpbar_postion.y, GetColor(255, 255, 255), "HP  %d/%d", SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->GetCharaStetus(Character::Stetus::HP), SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->GetPlayerMaxHp());
 
@@ -599,26 +599,37 @@ void DungeonScene::DragAndDrop()
 			// アイコンの中心がスキルセットの範囲内にあるかどうかをチェックする
 			if (abs(mouce_x - slot_icon_x[i]) <= icon_r && abs(mouce_y - slot_icon_y[i]) <= icon_r) {
 				
-				skill_set_index[i] = icon_handle[clicked_icon];
+				if (i == clicked_icon) {
 
-				//スキルセット時のSE再生
-				//スロットにアイコンをセットする音を再生
-				SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[14]);
+					skill_set_index[i] = icon_handle[i];
 
-				// クリックされたアイコンのインデックスを選択済み配列に格納
-				SetDragSetIcon(clicked_icon, clicked_icon);
-				//セットしたスロットをtureに変更する
-				//i + 1はキー入力が6つあり、スロットは5つなので数を合わせるため(通常攻撃のキー入力があるため + 1加算させ,ずれを修正)
-				SetDragSet(i + 1, true);
+					//スキルセット時のSE再生
+					//スロットにアイコンをセットする音を再生
+					SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[14]);
 
-				break;
+					// クリックされたアイコンのインデックスを選択済み配列に格納
+					SetDragSetIcon(i, i);
+					//セットしたスロットをtureに変更する
+					//i + 1はキー入力が6つあり、スロットは5つなので数を合わせるため(通常攻撃のキー入力があるため + 1加算させ,ずれを修正)
+					SetDragSet(i + 1, true);
+
+					ResetClickedIcon();
+
+					break;
+				
+				}
 
 			}
-
 			//範囲外な時
-			/*if (abs(mouce_x - slot_icon_x[i]) >= icon_r && abs(mouce_y - slot_icon_y[i]) >= icon_r) {
-				DrawRotaGraph()
-			}*/
+			else if (abs(mouce_x - slot_icon_x[i]) >= icon_r && abs(mouce_y - slot_icon_y[i]) >= icon_r) {
+				//クリックしたアイコンとiが一致すればそのiのアイコンを描画
+				//clicked_iconを配列番号に直入れするとリセットできなくなるためifチェックを入れる
+				if (i == clicked_icon) {
+					DrawRotaGraph(icon_x[i], icon_y[i], 1.0f, 0, icon_handle[i], true);
+				}
+				//クリックしたアイコンをリセット
+				ResetClickedIcon();
+			}
 		}
 	}
 

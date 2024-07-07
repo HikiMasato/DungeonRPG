@@ -42,7 +42,7 @@ public:
 
     
     //•`‰æ
-    void Draw(const hm::Camera& camera) override;
+    void Draw(ObjectType object_type, const hm::Camera& camera) override;
     //ƒAƒCƒeƒ€‚Ìà–¾•`‰æ
     void DrawItemStringData(int x, int y);
 

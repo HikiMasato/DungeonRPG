@@ -197,7 +197,7 @@ void SceneStartMap::Draw()
 	}
 	
 	//プレイヤーの描画
-	SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->Draw(camera);
+	SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->Draw(SceneTitle::game_manager->GetObjectManager()->factory->GetPlayer()->GetObjectType(), camera);
 
 	//ダンジョンに入る時のUI
 	if (map_in_ui_open) {

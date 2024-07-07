@@ -63,7 +63,7 @@ std::variant<std::vector<std::vector<int>>, std::vector<std::vector<std::string>
 		//intŒ^‚Ìw’è‚ª‚ ‚Á‚½ê‡‚Í(hp,mp,attack,defence)‚Ì“ü‚Á‚½intŒ^‚Ìvector”z—ñ‚ª•Ô‚Á‚Ä‚­‚é
 	case Stetus::CharaStetus::PLAYERINT:
 
-		for (int i = 0; i < stetus_.size() - 2; i++) {
+		for (int i = 0; i < stetus_.size() - 1; i++) {
 			
 			//•¶š—ñ‚Ì”’l‚ğintŒ^‚É•ÏŠ·‚·‚é
 			stetus_[i][0] = std::stoi(chara_stetus[i][0].c_str());//hp

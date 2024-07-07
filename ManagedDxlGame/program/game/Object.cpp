@@ -46,7 +46,7 @@ void Object::Update(float delta_time)
 
 //------------------------------------------------------------------------------------------------------------
 //•`‰æ
-void Object::Draw(const hm::Camera& camera)
+void Object::Draw(ObjectType object_type, const hm::Camera& camera)
 {
 }
 

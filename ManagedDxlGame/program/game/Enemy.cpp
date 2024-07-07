@@ -61,6 +61,7 @@ Enemy::Enemy(tnl::Vector3 start_pos, int hp, int mp, int attack, int defence, st
 	SetCharaStetus(Character::Stetus::DEF, defence);
 	SetCharaStetus(Character::Stetus::EXP, exp);
 	SetCharaStetus(Character::Stetus::LEVEL, level);
+	SetCharaStetus(Character::Stetus::MAXHP, hp);
 
 	LoadDivGraph(chara_ph.c_str(), chra_chip_all, 3, 4, chra_chip_size, chra_chip_size, const_cast<int*>(GetCharaChipArray()));
 	

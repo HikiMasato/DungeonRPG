@@ -41,7 +41,7 @@ void Character::Update(float delta_time)
 }
 
 //------------------------------------------------------------------------------------------------------------
-void Character::Draw(const hm::Camera& camera)
+void Character::Draw(ObjectType object_type, const hm::Camera& camera)
 {
 	Animation(chra_chip_array, obj_speed, maxindex, drawph);
 
@@ -49,19 +49,22 @@ void Character::Draw(const hm::Camera& camera)
 	tnl::Vector3 new_pos = { now_pos.x - camera.cameraPos.x, now_pos.y - 10 - camera.cameraPos.y, 0 };
 
 	//敵のhpバーの描画
-	tnl::Vector3 hp_pos = { now_pos.x - camera.cameraPos.x, now_pos.y - 20 - camera.cameraPos.y,0 };
+	tnl::Vector3 hp_pos = { now_pos.x - 30 - camera.cameraPos.x, now_pos.y + 20 - camera.cameraPos.y,0 };
 	
+	int draw_max_hp = GetCharaStetus(Stetus::MAXHP);
 	int draw_hp = GetCharaStetus(Stetus::HP);
-
-
 
 	//キャラチップを描画
 	//描画座標を調整
 	DrawRotaGraph(new_pos.x, new_pos.y, 1.5f, 0, drawph, true);
-	
-	//hpberの描画
-	DrawHpbarCharactor(draw_hp, hp_pos);
 
+
+	//プレイヤーでなければHPbarを表示
+	if (object_type != ObjectType::PLAYER) {
+		//hpberの描画
+		DrawHpbarCharactor(draw_max_hp, draw_hp, hp_pos);
+	}
+	
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -145,6 +148,9 @@ int Character::GetCharaStetus(Stetus stetus) const
 	case Stetus::LEVEL:
 		return chara_level;
 		break;
+	case Stetus::MAXHP:
+		return chara_max_hp;
+		break;
 	default:
 		tnl::DebugTrace("\nStetusエラー\n");
 		break;
@@ -180,6 +186,9 @@ void Character::SetCharaStetus(Stetus stetus, int set_value)
 		break;
 	case Stetus::LEVEL:
 		chara_level = set_value;
+		break;
+	case Stetus::MAXHP:
+		chara_max_hp = set_value;
 		break;
 	default:
 		tnl::DebugTrace("\nStetusエラー(SetCharaStetus)\n");
@@ -258,20 +267,54 @@ void Character::SkillAttack(Skill* used_skill)
 
 //------------------------------------------------------------------------------------------------------------
 //キャラクターのHpbarの描画
-void Character::DrawHpbarCharactor(int hp, const tnl::Vector3& pos) {
+void Character::DrawHpbarCharactor(int max_hp, int hp, const tnl::Vector3& pos) {
 
-	static float width = 0;
 
-	//widthはHPバーの最大幅を表す
-	width = hp;
-	if (width <= 0)width = 0;
+	int red = 0, green = 255, blue = 0;
+
+	const int hp_width = 100;
+
+	// HPの最大値を仮定して、HPの割合を計算
+	float hp_ratio = static_cast<float>(hp) / max_hp; // maxHpは最大HPの値
+
+
+	// 割合に応じてRGB値を計算
+	if (hp_ratio < 0.5f) {
+		red = 255;
+		green = static_cast<int>(255 * (2 * hp_ratio));
+	}
+	//HPが増える場合は緑色のまま
+	else {
+		green = 255;
+	}
+
+	
+
+	//HPが0以下になった場合は、HPbarは0に固定
+	if (hp_ratio <= 0) {
+		hp_ratio = 0;
+	}
+
+
+
+
 	int fs = GetFontSize();
-
-	SetFontSize(10);
 	int x = (int)pos.x;
 	int y = (int)pos.y;
-	DrawBox(x, y, x + width + 1, y + 10, 0, true);
-	DrawBox(x + 1, y + 1, x + width + 1, y + 9, -1, false);
-	DrawBox(x + 2, y + 2, x + width, y + 8, 0xff77ff77, true);
+	// 色を設定
+	int color = GetColor(red, green, blue);
+
+
+	SetFontSize(10);
+
+	//===========描画=============
+	//一番下のHPBAR
+	DrawBox(x, y, x + hp_width + 1, y + 10, 0, true);
+	
+	DrawBox(x + 1, y + 1, x + hp_width * hp_ratio, y + 9, -1, false);
+	//増減するHPBAR
+	DrawBox(x + 2, y + 2, x + hp_width * hp_ratio, y + 8, color, true);
+	
 	SetFontSize(fs);
+
 }

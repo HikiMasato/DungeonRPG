@@ -112,7 +112,7 @@ Item::~Item()
 
 //------------------------------------------------------------------------------------------------------------
 //•`‰æ
-void Item::Draw(const hm::Camera& camera)
+void Item::Draw(ObjectType object_type, const hm::Camera& camera)
 {
 	DrawRotaGraph(get_item_pos.x - camera.cameraPos.x, get_item_pos.y - camera.cameraPos.y, game_manager->GetRatio(), 0, get_item_handle, true);
 }

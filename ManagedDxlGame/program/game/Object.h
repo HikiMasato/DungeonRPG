@@ -15,6 +15,7 @@ public:
 
 	//オブジェクトタイプ
 	enum class ObjectType {
+		NONE,
 	    PLAYER,
 		ENEMY,
 		ITEM,
@@ -98,7 +99,7 @@ public:
 	}
 
 	virtual void Update(float delta_time);
-	virtual void Draw(const hm::Camera& camera);
+	virtual void Draw(ObjectType object_type,const hm::Camera& camera);
 
 
 	//マップチップキャラチップのサイズ

@@ -337,6 +337,11 @@ private:
 		drag_set_icon[drag_index] = set_index;
 	}
 
+	//クリックしたアイコンをリセット
+	void ResetClickedIcon() {
+		clicked_icon = -1;
+	}
+
 	// ドラッグ中のスキルと、ドラッグしてスロットにセットしたスキルのインデックスをリセットする関数
 	void ResetDragSetIcon(int drag_index) {
 		clicked_icon = -1;

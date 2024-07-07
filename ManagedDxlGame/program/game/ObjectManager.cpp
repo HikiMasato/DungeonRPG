@@ -110,21 +110,22 @@ void ObjectManager::Draw()
 	if (!alive_item.empty()) {
 		//マップに生存中のアイテムの描画
 		for (auto& item : alive_item) {
-			item->Draw(factory->camera);
+			item->Draw(item->GetObjectType(), factory->camera);
 		}
 	}
 	//object_listに何もなければ処理しない
 	if (!object_list.empty()) {
 		//object_listの描画
 		for (auto& object : object_list) {
-			object->Draw(factory->camera);
+			object->Draw(object->GetObjectType(), factory->camera);
+			
 		}
 	}
 	//charactor_listに何もなければ処理しない
 	if (!charactor_list.empty()) {
 		//キャラクターの描画
 		for (auto& chara : charactor_list) {
-			chara->Draw(factory->camera);
+			chara->Draw(chara->GetObjectType(), factory->camera);
 		}
 	}
 
