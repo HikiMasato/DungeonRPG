@@ -430,24 +430,42 @@ bool GameManager::CheckNearByPlayer(std::shared_ptr<Enemy> enemy)
 
 	tnl::Vector3 playerPos = WorldToLocalPos(object_manager->factory->GetPlayer()->GetCharaPos());
 
-	bool isNear = false;
+	bool is_near = false;
 	for (int i = 0; i < 4; ++i) {
 		if (playerPos.x == enemyPosNear[i].x && playerPos.y == enemyPosNear[i].y) {
-			isNear = true;
+			is_near = true;
 			break;
 		}
 	}
-	return isNear;
-	return false;
+	
+	return is_near;
 
 }
+
+//------------------------------------------------------------------------------------------------------------
+bool GameManager::CheckRangedByPlayer(std::shared_ptr<Enemy> enemy)
+{
+	float range = 5;
+	
+	tnl::Vector3 get_en_pos = enemy->GetCharaPos();
+	tnl::Vector3 get_pl_pos = object_manager->factory->GetPlayer()->GetCharaPos();
+
+
+	tnl::Vector3 enemy_pos  = WorldToLocalPos(get_en_pos);
+	tnl::Vector3 player_pos = WorldToLocalPos(get_pl_pos);
+
+	float distance = (player_pos - enemy_pos).length																																																																						(); // プレイヤーと敵の距離
+
+	return distance <= range;
+
+}
+
 //------------------------------------------------------------------------------------------------------------
 void GameManager::CheckIsDeadCharactor(std::shared_ptr<Character> object, tnl::Vector3 pos)
 {
 	tnl::Vector3 dead_pos;
 	//dir方向のポジションをとる
 	dead_pos = WorldToLocalPos(object->GetCharaPos()) + GetFirstDirVector((int)object->GetCharaDir());
-
 
 }
 

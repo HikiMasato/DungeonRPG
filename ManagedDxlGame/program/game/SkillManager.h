@@ -38,7 +38,10 @@ public:
 		LEVEL = 3,
 		ROCK = 3,
 		FIRE = 4,
-		THUNDER = 5
+		THUNDER = 5,
+		BlUEFIRE = 2,
+		PARTICLEEXPLOSION = 3,
+		WHITEBEAM= 4
 
 	};
 

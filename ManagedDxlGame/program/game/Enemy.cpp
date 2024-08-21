@@ -47,8 +47,9 @@
 
 
 
-//------------------------------------------------------------------------------------------------------------
-//コンストラクタ
+// ==========================================================================================================
+// コンストラクタ
+// ==========================================================================================================
 Enemy::Enemy(tnl::Vector3 start_pos, int hp, int mp, int attack, int defence, std::string name, std::string chara_ph, int exp, int level, GameManager* game_manager_)
 {
 	game_manager = game_manager_;
@@ -68,8 +69,9 @@ Enemy::Enemy(tnl::Vector3 start_pos, int hp, int mp, int attack, int defence, st
 	SetCharaInPos(game_manager->WorldToLocalPos(GetCharaPos()));
 }
 
-//------------------------------------------------------------------------------------------------------------
-//デストラクタ
+// ==========================================================================================================
+// デストラクタ
+// ==========================================================================================================
 Enemy::~Enemy()
 {
 	tnl::DebugTrace("\n===================Enemyデストラクタ処理===================\n");
@@ -79,6 +81,7 @@ Enemy::~Enemy()
 //毎フレーム実行
 void Enemy::Update(float delta_time)
 {
+	//敵行動
 	EnemyMove();
 }
 
@@ -209,17 +212,43 @@ void Enemy::MoveDestination()
 		}
 	}
 
+	//遠距離攻撃の範囲内にいる場合
+	if (CheckIsThereRangedPlayer(GetCharaDir(), ene_now_pos)) {
+		tnl::DebugTrace("\n====================遠距離攻撃====================\n");
+
+		SetCanAttack(false);
+		//攻撃可能に変更
+		SetCanRangedAttack(true);
+
+		ResetDistination();
+
+	}
+	//遠距離の範囲外にいる場合は
+	else if(CheckIsTherePlayer(GetCharaDir(), ene_now_pos)){
+		//遠距離攻撃はfalseに
+		SetCanRangedAttack(false);
+	}
 	//周囲にプレイヤーがいる場合
 	if (CheckIsTherePlayer(GetCharaDir(), ene_now_pos)) {
-		//ResetDistination();
-		tnl::DebugTrace("\n攻撃\n");
-		//敵の攻撃選択
-		//EnemyAttack();
-		return;
+		tnl::DebugTrace("\n====================攻撃====================\n");
+		
+		//攻撃可能に変更
+		SetCanAttack(true);
+		//遠距離攻撃はfalseに
+		SetCanRangedAttack(false);
+
+		ResetDistination();
+
 	}
+	else {
+		
+		SetCanAttack(false);
+	}
+	
+
 	//プレイヤー以外の目的地の場合
 	//目的地に到達したときに何かする
-	else if (ene_now_pos.x == destination_pos.x && ene_now_pos.y == destination_pos.y) {
+	if (ene_now_pos.x == destination_pos.x && ene_now_pos.y == destination_pos.y) {
 		//目的地をランダムに変更する
 		tnl::DebugTrace("\n目的地に到達\n");
 		ResetDistination();
@@ -229,9 +258,7 @@ void Enemy::MoveDestination()
 		//プレイヤーと敵が同じ部屋ではない場合
 		if (game_manager->GetObjectManager()->factory->GetPlayer()->GetNowRoomValue() != ene_now_in_room) {
 			ResetDistination();
-			return;
 		}
-		return;
 	}
 	
 	//プレイヤーが発見維持範囲内かチェック
@@ -244,10 +271,7 @@ void Enemy::MoveDestination()
 		pos += vec[min_dir] * 1;
 		SetCharaPos(pos);
 		SetDir(min_dir);
-		return;
 	}
-
-	
 
 }
 
@@ -326,7 +350,7 @@ std::shared_ptr<EffectManager> Enemy::EnemyAttack(Skill* last_skill, std::list<s
 {
 	
 	//ランダム数値を取得(スキルのインデックス番号)
-	int rand_ene_attack_index = game_manager->GetRandValue(0, 1);
+	int rand_ene_attack_index = game_manager->GetRandValue(0, int(GetSkillList().size() - 1));
 	
 	last_skill = GetSkillList()[rand_ene_attack_index];
 
@@ -337,7 +361,30 @@ std::shared_ptr<EffectManager> Enemy::EnemyAttack(Skill* last_skill, std::list<s
 
 	tnl::Vector3 ene_eff_pos = GetEffectPos();
 			
-	tnl::DebugTrace("\n敵のエフェクト追加\n");
+	tnl::DebugTrace("\n=========敵のエフェクト追加=========\n");
+
+	return std::make_shared<EffectManager>(last_skill->GetGraphicsVector(), ene_eff_pos, last_skill->GetAnimSpeed(), ene_eff_index);
+
+}
+
+//------------------------------------------------------------------------------------------------------------
+
+std::shared_ptr<EffectManager> Enemy::EnemyRangedAttack(Skill* last_skill, std::list<std::shared_ptr<EffectManager>> draw_effect_list, std::shared_ptr<Enemy> enemy_)
+{
+	// ランダム数値を取得 (スキルのインデックス番号)
+	int rand_ene_attack_index = game_manager->GetRandValue(0, int(GetRangedSkillList().size() - 1));
+
+	last_skill = GetRangedSkillList()[rand_ene_attack_index];
+
+	// アニメーション描画座標決定
+	tnl::Vector3 ef_pos = GetCharaPos();
+
+	SetAnimationPos(ef_pos);
+
+	int ene_eff_index = last_skill->GetGraphicsAllNum();
+	tnl::Vector3 ene_eff_pos = GetEffectPos();
+
+	tnl::DebugTrace("\n=========敵のエフェクト追加=========\n");
 
 	return std::make_shared<EffectManager>(last_skill->GetGraphicsVector(), ene_eff_pos, last_skill->GetAnimSpeed(), ene_eff_index);
 
@@ -364,6 +411,30 @@ bool Enemy::CheckIsTherePlayer(MoveDir dir, tnl::Vector3 pos)
 	if (destination_pos.x == next_pos.x && destination_pos.y == next_pos.y) {
 		return true;
 	}
+	return false;
+}
+
+//------------------------------------------------------------------------------------------------------------
+bool Enemy::CheckIsThereRangedPlayer(MoveDir dir, tnl::Vector3 pos)
+{
+
+	float range = 5.0f;
+	tnl::Vector3 addpos = { 1.0f,1.0f,0};
+
+	// 方向に基づいてチェック位置を計算
+	tnl::Vector3 check_pos = (pos) + vec[(int)dir] * 1.f;
+	tnl::Vector3 player_pos = game_manager->GetObjectManager()->factory->GetPlayer()->GetCharaPos();
+
+	// ワールド座標をローカル座標に変換
+	tnl::Vector3 pl_pos = game_manager->WorldToLocalPos(player_pos);
+
+	// プレイヤーが指定された範囲内にいるかどうかをチェック（円形範囲）
+	float distance = (pl_pos - check_pos).length();
+	if (distance <= range && !CheckIsTherePlayer(dir, pos)) {
+		tnl::DebugTrace("\n===========チェック範囲内===========\n");
+		return true;
+	}
+
 	return false;
 }
 

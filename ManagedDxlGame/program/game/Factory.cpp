@@ -27,6 +27,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Item.h"
+#include "MenuWindow.h"
 //-------------------------------------------------------
 //Others
 #include "Debug.h"

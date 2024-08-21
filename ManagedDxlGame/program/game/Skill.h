@@ -34,6 +34,9 @@ public:
 		return anim_speed;
 	}
 
+	const std::string& GetSkillType()  {
+		return skill_type;
+	}
 
 private:
 

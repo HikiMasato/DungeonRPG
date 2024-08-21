@@ -41,10 +41,32 @@ public:
 
 	//EnemyAttackで関数でランダム、その時の状態によって発動するスキルを変更する
 	std::shared_ptr<EffectManager> EnemyAttack(Skill* last_skill, std::list<std::shared_ptr<EffectManager>> draw_effect_list, std::shared_ptr<Enemy>enemy_);
+	//遠距離攻撃
+	std::shared_ptr<EffectManager> EnemyRangedAttack(Skill* last_skill, std::list<std::shared_ptr<EffectManager>> draw_effect_list, std::shared_ptr<Enemy>enemy_);
 
 	//EnemyAnimationでEnemyAttacで決まったスキルを受け取り、そのスキルのAnimationを戻り値で返せるようにする
 	std::shared_ptr<EffectManager> EnemyEffect(std::vector<int> skill_list, tnl::Vector3 pos, int anim_speed, int index);
 
+
+	// ==================================================================================
+	// ゲッター
+	// ==================================================================================
+	bool GetCanAttack() const {
+		return can_attack;
+	}
+	bool GetCanRangedAttack() const {
+		return can_ranged_attack;
+	}
+
+	// ==================================================================================
+	// セッター
+	// ==================================================================================
+	void SetCanAttack(bool now_action) {
+		can_attack = now_action;
+	}
+	void SetCanRangedAttack(bool now_action) {
+		can_ranged_attack = now_action;
+	}
 
 private:
 	//目的地の座標
@@ -63,6 +85,10 @@ private:
 	bool same_room = false;
 	//
 	bool is_not_wall[4];
+
+	//攻撃可能フラグ
+	bool can_attack = false;
+	bool can_ranged_attack = false;
 
 	//方向を表す単位ベクトル
 	tnl::Vector3 vec[4]{
@@ -85,6 +111,8 @@ private:
 
 	//周囲にプレイヤーがいるかどうかをチェックする
 	bool CheckIsTherePlayer(MoveDir dir, tnl::Vector3 pos);
+
+	bool CheckIsThereRangedPlayer(MoveDir dir, tnl::Vector3 pos);
 
 	//dirから見て特定の座標がどの向きかを取得する
 	MoveDir GetDir(const MoveDir dir, const MoveDir getdir);

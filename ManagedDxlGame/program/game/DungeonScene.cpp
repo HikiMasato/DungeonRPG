@@ -208,8 +208,7 @@ void DungeonScene::InitDungeonScene()
 	gold_ui			 = std::make_shared<Menu>(1060, 10, 220, 100, "using_graphics/window_ui.png");
 	skill_ui		 = std::make_shared<Menu>(base_skill_set_pos.x, base_skill_set_pos.y - 40, 90, 360, "using_graphics/window_ui.png");
 	have_skill_ui	 = std::make_shared<Menu>(base_skill_set_pos.x - 500, base_skill_set_pos.y - 150, 500, 300, "using_graphics/window_ui.png");
-	alway_menu		 = std::make_shared<Menu>(10, 200, 150, 150, "using_graphics/window_ui.png");
-	option			 = std::make_shared<Menu>(100, 300, 220, 220, "using_graphicse/window_ui.png");//(WIP)
+	option			 = std::make_shared<Menu>(100, 300, 220, 220, "using_graphicse/window_ui.png");
 	//keyboardのui
 	keyboard_ui		 = std::make_shared<Menu>(10, 350, 360, 370, "using_graphics/window_ui.png");
 
@@ -320,7 +319,6 @@ void DungeonScene::UIDraw()
 			//スロットスキルを描画
 			DrawRotaGraph(base_skill_set_pos.x + 45, base_skill_set_pos.y + i * 70, 1.0f, 0, slot_icon_list[i], true);
 		}
-
 	}
 
 	if (now_draw_uiwin == NowDrawUiWindow::SKILL) {
@@ -368,13 +366,10 @@ void DungeonScene::UIDraw()
 	
 
 	first_menu->MenuAll();
-	alway_menu->MenuDraw();
-	DrawStringEx(alway_menu->menu_x + 10, alway_menu->menu_y + 50, -1, "Menuを開く");
 	//optionwindowを開いていたら
 	if (now_draw_uiwin == NowDrawUiWindow::OPTION) {
 		option->MenuDraw();
 
-		
 	}
 
 	//インベントリオープン時描画
@@ -455,6 +450,9 @@ void DungeonScene::UIDraw()
 			}
 
 		}
+
+		DrawRotaGraph(keyboard_ui->menu_x + 340, keyboard_ui->menu_y + 35, 1.0f, 0, icon_list[12], true);
+
 	}
 
 	{//目標を表示させるUI
@@ -744,31 +742,49 @@ bool DungeonScene::SeqCheckDeadEnemy(const float delta_time)
 bool DungeonScene::SeqActiveEnemyAttack(const float delta_time)
 {
 	tnl::DebugTrace("\===========================SeqActiveEnemyAttack=================================\n");
-	
-	if (enemy_sequence_.isStart()) {
+			
 		
-		
-		//生存している敵の数分回す
-		for (auto& alive_enemy : SceneTitle::game_manager->GetObjectManager()->GetAliveEnemyList()) {
+	//生存している敵の数分回す
+	for (auto& alive_enemy : SceneTitle::game_manager->GetObjectManager()->GetAliveEnemyList()) {
 
-			if (SceneTitle::game_manager->CheckNearByPlayer(alive_enemy)) {
+		//近距離の場合
+		//かつ遠距離攻撃を持っていなければ
+		if (alive_enemy->GetCanAttack() && alive_enemy->GetRangedSkillList().empty()) {
 
-				// std::findを使用して、alive_enemyがcan_attack_enemyに既に存在するかをチェック
-				auto it = std::find(can_attack_enemy.begin(), can_attack_enemy.end(), alive_enemy);
+			// std::findを使用して、alive_enemyがcan_attack_enemyに既に存在するかをチェック
+			auto it = std::find(can_attack_enemy.begin(), can_attack_enemy.end(), alive_enemy);
 
-				// alive_enemyがリストに存在しない場合のみ、リストに追加する
-				if (it == can_attack_enemy.end()) {
-					can_attack_enemy.emplace_back(alive_enemy);
-				}
-
+			// alive_enemyがリストに存在しない場合のみ、リストに追加する
+			if (it == can_attack_enemy.end()) {
+				can_attack_enemy.emplace_back(alive_enemy);
 			}
-		}
 
+			//敵は攻撃モーションに移る
+			enemy_sequence_.change(&DungeonScene::SeqEnemyAttack);
+
+			return true;
+		}
+		//遠距離の場合
+		//かつ遠距離攻撃を持っていれば
+		if (alive_enemy->GetCanRangedAttack() && !alive_enemy->GetRangedSkillList().empty()) {
+
+			// std::findを使用して、alive_enemyがcan_attack_enemyに既に存在するかをチェック
+			auto it = std::find(can_attack_enemy.begin(), can_attack_enemy.end(), alive_enemy);
+
+			// alive_enemyがリストに存在しない場合のみ、リストに追加する
+			if (it == can_attack_enemy.end()) {
+				can_attack_enemy.emplace_back(alive_enemy);
+			}
+
+			//敵は攻撃モーションに移る
+			enemy_sequence_.change(&DungeonScene::SeqEnemyRangedAttack);
+
+			return true;
+		}
 	}
-	//敵は攻撃モーションに移る
-	enemy_sequence_.change(&DungeonScene::SeqEnemyAttack);
 	
-	return true;
+	
+	return false;
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -808,6 +824,7 @@ bool DungeonScene::SeqEnemyAttack(const float delta_time)
 
 				//攻撃フラグを更新
 				atk_ene->SetIsAttacked(true);
+				atk_ene->SetIsAttacked(true);
 				
 			}
 
@@ -824,6 +841,79 @@ bool DungeonScene::SeqEnemyAttack(const float delta_time)
 
 		enemy_sequence_.change(&DungeonScene::SeqActiveEnemyAttack);
 		
+		return true;
+
+	}
+	return false;
+}
+
+//------------------------------------------------------------------------------------------------------------
+//遠距離攻撃時の敵の攻撃
+bool DungeonScene::SeqEnemyRangedAttack(const float delta_time)
+{
+	tnl::DebugTrace("\n=======================SeqEnemyRangedAttack============================\n");
+
+	//EnemyAttackで関数でランダム、その時の状態によって発動するスキルを変更する
+	//EnemyAttackでEnemyAttacで決まったスキルを受け取り、そのスキルのAnimationを戻り値で返せるようにする
+	//EnemyAttackの戻り値をEffectManagerにしてdraw_effect_listに追加して、Effectを実行する
+
+	if (enemy_sequence_.isStart()) {
+
+		//攻撃可能な敵の数分回す
+		for (auto& atk_ene : can_attack_enemy) {
+
+			//攻撃する敵が遠距離攻撃を持っていなければreturn
+			if (atk_ene->GetRangedSkillList().empty()) {
+
+				tnl::DebugTrace("\n=======================遠距離攻撃を持っていない!!============================\n");
+
+				//攻撃済み判定
+				CheckIsEnemyAttacked();
+
+				enemy_sequence_.change(&DungeonScene::SeqActiveEnemyAttack);
+
+				return true;
+			}
+			//持っていれば
+			else {
+				//ランダムな攻撃を選択する
+				//std::shared<EffectManager>型が戻り値として帰ってくる
+				//描画リストに追加
+				if (!atk_ene->GetIsRangeAttacked()) {
+
+					//damage
+					if (last_skill != nullptr) {
+						atk_ene->SkillAttack(last_skill);
+					}
+					else {
+						atk_ene->Attack();
+					}
+
+					//攻撃サウンド再生
+					SceneTitle::game_manager->GetSoundManager()->ChosePlaySystemSound(SceneTitle::game_manager->GetSoundManager()->sound_csv[8]);
+					
+					//攻撃する敵がランダムに攻撃を選択しそれに沿ったエフェクトを返す。
+					//そのまま再生リストに追加
+					draw_effect_list.emplace_back(atk_ene->EnemyRangedAttack(last_skill, draw_effect_list, atk_ene));
+
+					tnl::DebugTrace("\n===============攻撃完了！(SeqEnemyRangedAttack)================\n");
+
+					//攻撃フラグを更新
+					atk_ene->SetIsRangeAttacked(true);
+				
+				}
+			}			
+		}
+	}
+
+	//シーケンス移動
+	if (draw_effect_list.empty()) {
+
+		//攻撃済み判定
+		CheckIsEnemyAttacked();
+
+		enemy_sequence_.change(&DungeonScene::SeqActiveEnemyAttack);
+
 		return true;
 
 	}
@@ -918,6 +1008,11 @@ void DungeonScene::CheckIsEnemyAttacked()
 		//敵ごとに持っている攻撃終了判定がtureなら削除する
 		if ((*atk_ene)->GetIsAttacked()) {
 			(*atk_ene)->SetIsAttacked(false);
+			atk_ene = can_attack_enemy.erase(atk_ene);
+			continue;
+		}
+		if ((*atk_ene)->GetIsRangeAttacked()) {
+			(*atk_ene)->SetIsRangeAttacked(false);
 			atk_ene = can_attack_enemy.erase(atk_ene);
 			continue;
 		}

@@ -122,6 +122,20 @@ void Character::SetAnimationPos(tnl::Vector3 pos)
 }
 
 //------------------------------------------------------------------------------------------------------------
+//遠距離攻撃のエフェクト座標
+void Character::SetRangedAnimationPos(tnl::Vector3 pos)
+{
+	//この関数を呼び出したキャラの現在座標の取得
+	tnl::Vector3 now_pos = GetCharaPos();
+	//effect座標を算出(現在座標 + 現在の方向の1つ先の座標)
+	tnl::Vector3 set_pos = SceneTitle::game_manager->WorldToLocalPos(now_pos) + SceneTitle::game_manager->GetFirstDirVector((int)my_dir);
+	//エフェクト再生座標
+	effect_pos = SceneTitle::game_manager->LocalToWorldPos(set_pos.x, set_pos.y);
+	//セット
+	SetEffectPos(effect_pos);
+}
+
+//------------------------------------------------------------------------------------------------------------
 //引数で指定したステータスを返す関数
 int Character::GetCharaStetus(Stetus stetus) const
 {

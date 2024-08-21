@@ -54,7 +54,8 @@ Skill::Skill(int effect_type_, float damege_rate_, float heal_rate_,int all_num_
 	float_data[1] = heal_rate;
 
 	//•¶Žš—ñ
-	//skill_type = skill_type_;
+	skill_type = skill_type_;
+
 	skill_name = skill_name_;
 	gh_handles = gh_handles_;
 

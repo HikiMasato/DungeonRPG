@@ -15,6 +15,8 @@ class hm::Camera;
 class Player;
 class Enemy;
 class Item;
+class Menu;
+class MenuWindow;
 
 class GameManager;
 class EnemyManager;
@@ -68,7 +70,6 @@ public:
 	//arg5…インスタンス化するマップチップが壁かどうかのフラグ(true…壁、false…壁以外)
 	void GenerateMapChip(tnl::Vector3 old_chip_pos, int chip_handle, std::list<std::shared_ptr<MapChip>>& all_chip_list, std::list<std::shared_ptr<MapChip>>& wall_list, bool is_wall = false);
 
-
 	//======================ゲッター===========================
 
 	
@@ -112,60 +113,13 @@ private:
 	std::shared_ptr<MapChip>mapchip = nullptr;
 	std::shared_ptr<Item> item = nullptr;
 
+	
+	
 	//プレイヤーのスポーンタイプ
 	PlayerSpawn now_spawn = PlayerSpawn::STARTMAP;
 
-#if 0
 
-	////呼び出し側で引数に設定したクラスがtemplate <A>に置き換わる
-	////クラスのインスタンス化を行う関数
-	//template<class A>
-	//std::shared_ptr<A> GenerateObject(A) {
-	//	object->object_list.emplace_back(object = std::make_shared<A>());
-	//}
+	tnl::Vector3 base_skill_set_pos = { 1185,400,0 };
 
-	//template<Object::ObjectType A>
-	//std::list<std::shared_ptr<Object*>> StoreObject(Object::ObjectType) {
-	//	auto it = object->object_list.begin();
-	//	switch (Object::ObjectType)
-	//	{
-	//	case:Object::ObjectType::ENEMY
-	//		for (it->get() == Object::ObjectType::ENEMY) {
-	//			return
-	//		}
-	//		break;
-	//	
-	//	case:Object::ObjectType::ITEM
-	//		for (it->get() == Object::ObjectType::ITEM) {
-	//			return
-	//		}
-	//		break;
-	//		
-	//	default:
-	//		break;
-	//	}
-	//	
-	//}
 
-		////objectを消去する関数
-	//void  DeleteObject() {
-
-	//	auto it = obj->objlist.begin();
-	//	while (it != obj->objlist.end()) {
-
-	//		if (Obj::ObjectType::TARGET == obj->GetActType()) {
-	//			obj.reset();
-	//		}
-	//		if (Obj::ObjectType::PLAYER == obj->GetActType()) {
-	//			obj.reset();
-	//		}
-	//		if (Obj::ObjectType::ITEM == obj->GetActType()) {
-	//			obj.reset();
-	//		}
-
-	//		it++;
-	//	}
-
-	//}
-#endif // 0
 };

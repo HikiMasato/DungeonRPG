@@ -86,6 +86,9 @@ public:
 	bool GetIsAttacked() const {
 		return is_attack;
 	}
+	bool GetIsRangeAttacked() const {
+		return is_range_attack;
+	}
 	int GetObjectSpeed() const {
 		return obj_speed;
 	}
@@ -117,6 +120,10 @@ public:
 	void SetIsAttacked(bool now_attacked) {
 		is_attack = now_attacked;
 	}
+	//遠距離攻撃済み判定をセットする
+	void SetIsRangeAttacked(bool now_range_attacked) {
+		is_range_attack = now_range_attacked;
+	}
 	//キャラ経験値を更新する
 	void SetCharaExp(int now_exp) {
 		chara_exp = now_exp;
@@ -129,6 +136,9 @@ public:
 	//アニメーション座標(エフェクト再生座標)
 	void SetAnimationPos(tnl::Vector3 pos);
 	
+	//遠距離攻撃のエフェクト座標
+	void SetRangedAnimationPos(tnl::Vector3 pos);
+
 	//整数型のプレイヤーの値を受け取り指定されたステータスへとセットされる
 	void SetCharaStetus(Stetus stetus, int set_value);
 
@@ -147,7 +157,11 @@ public:
 	inline std::vector<Skill*>& GetSkillList() {
 		return my_skill;
 	}
-	
+	//キャラが持つ遠距離スキル
+	inline std::vector<Skill*>& GetRangedSkillList() {
+		return my_ranged_skill;
+	}
+
 	//キャラのHpbar
 	void DrawHpbarCharactor(int max_hp, int hp, const tnl::Vector3& pos);
 
@@ -214,17 +228,26 @@ private:
 
 
 
-	//=============キャラ詳細情報==================
+	// =============================================
+	// キャラ詳細情報
+	// =============================================
+	 
 	//キャラクターの部屋番号
 	int nowroomvalue;
 	//攻撃したかどうかのフラグ(攻撃済み…true)
 	bool is_attack = false;
+	//遠距離攻撃をしたかどうかのフラグ
+	bool is_range_attack = false;
 	//所持スキル一覧//キャラクター
 	std::vector<Skill*> my_skill = {};
 
+	std::vector<Skill*> my_ranged_skill = {};
 
 
-	//=============ステータス強化幅=================
+
+	// =============================================
+	// ステータス強化幅
+	// =============================================
 	const int RAINFORCE_MIN = 5;
 	const int RAINFORCE_MAX = 10;
 

@@ -52,6 +52,7 @@ public:
 	void Update(const float delta_time);
 	void Draw();
 
+	
 	//Factoryクラスに生成を受注する関数(生成はFactoryが行うためここではステータスを渡すのと受注のみ行う)
 	//arg1…現在のスポーンタイプ(STARTMAPの場合 : プレイヤーのみ生成、DUNGEONの場合 : プレイヤー、アイテム、敵生成)
 	//arg2…階層移動の場合に呼び出す場合 : false(プレイヤーの生成以外を行う)、true(すべてのオブジェクトの生成を行う)
@@ -145,7 +146,9 @@ public:
 
 private:
 
-	//*****************変数宣言******************
+	// =================================================================
+	// 変数宣言
+	// =================================================================
 	GameManager* game_manager;
 	std::shared_ptr<Stetus>stetus = nullptr;
 	std::shared_ptr<ItemManager>item_manager = nullptr;
@@ -166,7 +169,7 @@ private:
 	std::list<std::shared_ptr<MapChip>>wall_chip;
 	//すべてのマップチップが格納されている
 	std::list <std::shared_ptr<MapChip>>all_chip_list;
-
+	
 	//クリアアイテムを生成時の判定に使用する変数
 	std::string rand_item = "";
 	const std::string check_item = "生成する";
@@ -181,7 +184,9 @@ private:
 	tnl::Vector3 old_chip_pos;
 
 
-	//=====スターとマップ用変数======
+	// ===============================================
+	// スターとマップ用変数
+	// ===============================================
 	//マップチップの縦数、横数
 	int map_graph_value_x = 8;
 	int map_graph_value_y = 11;
@@ -256,4 +261,6 @@ private:
 	//クリアアイテムの生成を受注する関数
 	//Probability関数によって生成するかを決める
 	void GenerateClearItem();
+
+
 };

@@ -74,6 +74,8 @@ public:
 	bool SeqActiveEnemyAttack(const float delta_time);
 	//ƒ‰ƒ“ƒ_ƒ€‚É“G‚ÌUŒ‚‚ğŒˆ’è‚·‚é
 	bool SeqEnemyAttack(const float delta_time);	
+	//‰“‹——£UŒ‚‚Ì“G‚ÌUŒ‚
+	bool SeqEnemyRangedAttack(const float delta_time);
 
 	//************MenuSequence*************
 	
@@ -241,7 +243,7 @@ private:
 	};
 
 	//UŒ‚‰Â”\‚È“G‚ğŠi”[‚·‚é
-	std::list<std::shared_ptr<Enemy>>can_attack_enemy;
+	std::list<std::shared_ptr<Enemy>> can_attack_enemy;
 	std::list<std::shared_ptr<Enemy>>::iterator ene_itr;
 
 	//icon‚ğƒŠƒXƒg‚ÉŠi”[

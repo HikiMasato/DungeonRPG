@@ -57,26 +57,26 @@ void Object::SetMoveCharaPos(Object::MoveDir dir)
 	switch (dir)
 	{
 	case Object::MoveDir::DOWN:
-		chara_pos.y += 2;
+		chara_pos.y += 4;
 		SetCharaPos(chara_pos);
 		SceneTitle::game_manager->CameraReset();
 
 
 		break;
 	case Object::MoveDir::LEFT:
-		chara_pos.x -= 2;
+		chara_pos.x -= 4;
 		SetCharaPos(chara_pos);
 		SceneTitle::game_manager->CameraReset();
 
 		break;
 	case Object::MoveDir::RIGHT:
-		chara_pos.x += 2;
+		chara_pos.x += 4;
 		SetCharaPos(chara_pos);
 		SceneTitle::game_manager->CameraReset();
 
 		break;
 	case Object::MoveDir::UP:
-		chara_pos.y -= 2;
+		chara_pos.y -= 4;
 		SetCharaPos(chara_pos);
 		SceneTitle::game_manager->CameraReset();
 

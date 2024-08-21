@@ -33,6 +33,7 @@
 #include "Enemy.h"
 #include "Item.h"
 #include "MapChip.h"
+#include "MenuWindow.h"
 //-------------------------------------------------------
 //Collistion
 #include "Collision.h" 
@@ -66,6 +67,7 @@ ObjectManager::ObjectManager(std::vector<std::vector<std::string>>& re_stetus, s
 
 	//キャラのスキルデータをSkillManagerに渡す
 	GiveSkillEffectData();
+
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -98,8 +100,10 @@ void ObjectManager::Update(const float delta_time)
 	}
 
 	
+	//Aliveフラグが降りている場合
 	//条件に合致するオブジェクトを削除する
 	EraseObjectList();
+
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -130,6 +134,7 @@ void ObjectManager::Draw()
 	}
 
 }
+
 
 //------------------------------------------------------------------------------------------------------------
 //Factoryクラスに生成を受注する関数(生成はFactoryが行うためここではステータスを渡すのと受注のみ行う)
@@ -648,6 +653,9 @@ void ObjectManager::SetEnemySkill(std::string name)
 	else if (name == "King") {
 		SetCharaSkill(factory->GetEnemy()->GetSkillList(), SkillManager::UseEffectType::ENEMY, SkillManager::EffectName::BRACKMAGIC);
 		SetCharaSkill(factory->GetEnemy()->GetSkillList(), SkillManager::UseEffectType::BOTHCHARACTOR, SkillManager::EffectName::RECOVERY);
+		SetCharaSkill(factory->GetEnemy()->GetSkillList(), SkillManager::UseEffectType::BOTHCHARACTOR, SkillManager::EffectName::BlUEFIRE);
+		//SetCharaSkill(factory->GetEnemy()->GetSkillList(), SkillManager::UseEffectType::BOTHCHARACTOR, SkillManager::EffectName::WHITEBEAM);
+		SetCharaSkill(factory->GetEnemy()->GetRangedSkillList(), SkillManager::UseEffectType::BOTHCHARACTOR, SkillManager::EffectName::PARTICLEEXPLOSION);
 	}
 
 }

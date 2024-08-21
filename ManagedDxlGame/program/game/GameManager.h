@@ -102,6 +102,10 @@ public:
 	
 	//引数の敵がプレイヤーと隣り合っているか確認
 	bool CheckNearByPlayer(std::shared_ptr<Enemy> enemy);
+
+	//引数の敵の攻撃範囲内にプレイヤーがいるか確認
+	bool CheckRangedByPlayer(std::shared_ptr<Enemy> enemy);
+
 	//敵が死んでいるか判定
 	void CheckIsDeadCharactor(std::shared_ptr<Character> object,tnl::Vector3 pos);
 	

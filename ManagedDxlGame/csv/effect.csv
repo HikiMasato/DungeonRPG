@@ -8,6 +8,9 @@ effecttype,damageRate,healRate,allnum,xnum,ynum,xsize,ysize,actSpeed,SkillType(s
 0,2,0,8,8,1,120,120,4,attack,Rock,using_graphics/effect/rock.png,using_graphics/icon/rock.png
 0,4,0,7,7,1,120,120,4,attack,Fire,using_graphics/effect/fire.png,using_graphics/icon/fire.png
 0,6,0,10,5,2,120,120,5,attack,Thunder,using_graphics/effect/thunder.png,using_graphics/icon/thunder.png
+4,2,0,10,10,1,120,120,5,rangedattack,BlueFire,using_graphics/effect/BlueFire.png,NODATA
+4,1,0,15,1,14,320,240,5,rangedattack,ParticleExplosion,using_graphics/effect/ParticleExplosion.png,NODATA
+4,1,0,12,1,12,320,240,5,rangedattack,WhiteBeam,using_graphics/effect/WhiteBeam.png,NODATA
 3,2,3,10,10,1,120,120,5,attack,Buff,using_graphics/effect/buff.png,NODATA
 3,0,2,10,10,1,120,120,5,attack,Debuff,using_graphics/effect/debuff.png,NODATA
 3,0,1,12,3,4,120,120,6,attack,Drop,using_graphics/effect/dropitem.png,NODATA
